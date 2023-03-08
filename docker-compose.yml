@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+    app:
+        build: .
+        container_name: paciente-app
+        volumes:
+            - .:/var/www
+            - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+        networks:
+            - app-network
+        depends_on:
+            - db
+            - redis
+
+    nginx:
+        build: .docker/nginx
+        container_name: paciente-nginx
+        restart: always
+        tty: true
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/var/www
+        networks:
+            - app-network
+        depends_on:
+            - app
+
+    db:
+          image: postgres:10-alpine
+          container_name: paciente-postgres
+          volumes:
+            - "./.docker/postgres:/var/lib/postgresql/data"
+          environment:
+            - POSTGRES_USER=paciente
+            - POSTGRES_PASSWORD=root
+          ports:
+          - "5432:5432"
+          networks:
+            - app-network
+
+    redis:
+        image: redis:alpine
+        container_name: paciente-redis
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
