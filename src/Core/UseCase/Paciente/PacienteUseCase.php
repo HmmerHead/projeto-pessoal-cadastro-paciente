@@ -58,12 +58,12 @@ class PacienteUseCase
 
     public function listarPacientes($input)
     {
-        $result = ($this->repository->listPacientes(
+        $result = $this->repository->listPacientes(
             filter: $input->get('filter', ''), 
             order: $input->get('order', 'DESC'), 
             page: $input->get('page', 1), 
             totalPage: $input->get('totalPage', 15)
-        ));
+        );
 
         return [
             'items' => $result->items(),
@@ -75,5 +75,10 @@ class PacienteUseCase
             'to' => $result->to(),
             'from' => $result->from(),
         ];
+    }
+
+    public function listarPaciente($input)
+    {
+        return $this->repository->listPaciente($input->id);
     }
 }

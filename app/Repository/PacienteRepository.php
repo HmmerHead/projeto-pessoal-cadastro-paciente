@@ -44,11 +44,15 @@ class PacienteRepository implements PacienteRepositoryInterface
 
         $pacienteDb->refresh();
         
-        return $this->toPacienteEntity($pacienteDb);;
+        return $this->toPacienteEntity($pacienteDb);
     }
-    public function listPaciente(): array
+    public function listPaciente($pacienteId): Paciente
     {
-        return [];
+        if (!$pacienteDB = $this->model->find($pacienteId)) {
+            throw new Exception('Paciente não encontrado');
+        }
+
+        return $this->toPacienteEntity($pacienteDB);
     }
 
     public function listPacientes(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter

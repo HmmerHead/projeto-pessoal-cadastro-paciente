@@ -35,9 +35,13 @@ class PacienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Paciente $paciente)
+    public function show(Paciente $paciente, PacienteUseCase $pacienteUseCase)
     {
-        //
+        $response = $pacienteUseCase->listarPaciente($paciente);
+
+        return (new PacienteResource($response))
+        ->response()
+        ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
