@@ -17,7 +17,20 @@ class PacienteController extends Controller
      */
     public function index(Request $request, PacienteUseCase $paciente)
     {
-        return $paciente->listarPacientes($request);
+        $response =  $paciente->listarPacientes($request);
+
+        return PacienteResource::collection($response['items'])
+                                    ->additional([
+                                        'meta' => [
+                                            'total' => $response['total'],
+                                            'current_page' => $response['current_page'],
+                                            'last_page' => $response['last_page'],
+                                            'first_page' => $response['first_page'],
+                                            'per_page' => $response['per_page'],
+                                            'to' => $response['to'],
+                                            'from' => $response['from'],
+                                        ]
+                                    ]);
     }
 
     /**
