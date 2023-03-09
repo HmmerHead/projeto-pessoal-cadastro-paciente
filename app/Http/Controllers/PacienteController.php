@@ -6,7 +6,7 @@ use App\Http\Requests\Paciente\CreateRequest;
 use App\Http\Requests\Paciente\UpadateRequest;
 use App\Http\Resources\PacienteResource;
 use App\Models\Paciente;
-use Core\UseCase\Paciente\CreatePacienteUseCase;
+use Core\UseCase\Paciente\PacienteUseCase;
 use Illuminate\Http\Response;
 
 class PacienteController extends Controller
@@ -22,7 +22,7 @@ class PacienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $pacienteRequest, CreatePacienteUseCase $paciente)
+    public function store(CreateRequest $pacienteRequest, PacienteUseCase $paciente)
     {
         $response = $paciente->salvarPaciente($pacienteRequest->toArray());
 
