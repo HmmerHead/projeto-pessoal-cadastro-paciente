@@ -79,4 +79,13 @@ class PacienteRepository implements PacienteRepositoryInterface
 
         );
     }
+
+    public function delete($pacienteId): bool
+    {
+        if (!$pacienteDb = $this->model->find($pacienteId)) {
+            throw new Exception('Category Not Found');
+        }
+        
+        return $pacienteDb->delete();
+    }
 }

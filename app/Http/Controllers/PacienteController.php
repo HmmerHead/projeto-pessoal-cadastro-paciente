@@ -73,8 +73,15 @@ class PacienteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Paciente $paciente)
+    public function destroy(Paciente $paciente, PacienteUseCase $pacienteUseCase)
     {
-        //
+        //TODO: melhorar response
+        if ($pacienteUseCase->deletarPaciente($paciente)) {
+            return (new PacienteResource($paciente))
+                ->response()
+                ->setStatusCode(Response::HTTP_OK);
+        }
+
+        return response()->noContent();
     }
 }

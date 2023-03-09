@@ -81,4 +81,16 @@ class PacienteUseCase
     {
         return $this->repository->listPaciente($input->id);
     }
+
+    public function deletarPaciente($input): bool
+    {
+        try {
+            DB::commit();
+            return $this->repository->delete($input->id);
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+    }
 }
