@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\PacienteRepository;
+use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(
+            PacienteRepositoryInterface::class,
+            PacienteRepository::class
+        );
     }
 
     /**
