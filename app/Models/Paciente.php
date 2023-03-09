@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Paciente extends Model
@@ -29,4 +30,9 @@ class Paciente extends Model
         'cpf' => 'string',
         'nascimento' => 'datetime',
     ];
+
+    public function CNS(): HasOne
+    {
+        return $this->hasOne(CNS::class, 'paciente_id');
+    }
 }
