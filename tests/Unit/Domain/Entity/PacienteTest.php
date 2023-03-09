@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Domain\Entity;
 
-use Core\UseCase\Entity\Paciente;
+use Core\Domain\Entity\Paciente;
 use PHPUnit\Framework\TestCase;
 use Core\Domain\ValueObject\Uuid;
 use DateTime;

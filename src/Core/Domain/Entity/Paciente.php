@@ -1,9 +1,9 @@
 <?php
 
-namespace Core\Usecase\Entity;
+namespace Core\Domain\Entity;
 
+use Core\Domain\Traits\MetodoMagicoTrait;
 use Core\Domain\ValueObject\Documento;
-use Core\UseCase\Traits\MetodoMagicoTrait;
 use Core\Domain\ValueObject\Uuid;
 use DateTime;
 
