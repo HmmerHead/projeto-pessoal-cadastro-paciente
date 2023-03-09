@@ -12,7 +12,7 @@ class Documento
         protected string $value
     ) {
         if (!$this->isValid($value)){
-            throw new Exception('Invalido');
+            throw new Exception('Documento Invalido');
         }
     }
 
