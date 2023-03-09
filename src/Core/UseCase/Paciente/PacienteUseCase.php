@@ -2,24 +2,31 @@
 
 namespace Core\UseCase\Paciente;
 
+use Core\Domain\Entity\CNS;
 use Core\Domain\Entity\Paciente;
+use Core\UseCase\Repository\CNSRepositoryInterface;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class PacienteUseCase
 {
-    protected $repository;
+    protected $repositoryPaciente;
+    protected $repositoryCns;
 
-    public function __construct(PacienteRepositoryInterface $repository)
+    public function __construct(
+        PacienteRepositoryInterface $repositoryPaciente,
+        CNSRepositoryInterface $repositoryCns
+        )
     {
-        $this->repository = $repository;
+        $this->repositoryPaciente = $repositoryPaciente;
+        $this->repositoryCns = $repositoryCns;
     }
 
     public function salvarPaciente($input)
     {
         try {
-            $entity = new Paciente(
+            $entityPaciente = new Paciente(
                 id: '',
                 nome: $input['nome'],
                 nomeMae: $input['nomeMae'],
@@ -27,9 +34,22 @@ class PacienteUseCase
                 nascimento: Date::parse($input['nascimento'])
             );
 
+            DB::beginTransaction();
+
+            $persistedPaciente = $this->repositoryPaciente->insert($entityPaciente);
+
+            $entityCns = new CNS(
+                cnsPaciente: (string) $input['cns'],
+                paciente_id: $persistedPaciente->id()
+            );
+
+            $this->repositoryCns->insert($entityCns);
+
             DB::commit();
 
-            return $this->repository->insert($entity);
+            return $persistedPaciente;
+
+
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -49,7 +69,7 @@ class PacienteUseCase
 
             DB::commit();
 
-            return $this->repository->update($entity);
+            return $this->repositoryPaciente->update($entity);
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -58,7 +78,7 @@ class PacienteUseCase
 
     public function listarPacientes($input)
     {
-        $result = $this->repository->listPacientes(
+        $result = $this->repositoryPaciente->listPacientes(
             filter: $input->get('filter', ''), 
             order: $input->get('order', 'DESC'), 
             page: $input->get('page', 1), 
@@ -79,14 +99,14 @@ class PacienteUseCase
 
     public function listarPaciente($input)
     {
-        return $this->repository->listPaciente($input->id);
+        return $this->repositoryPaciente->listPaciente($input->id);
     }
 
     public function deletarPaciente($input): bool
     {
         try {
             DB::commit();
-            return $this->repository->delete($input->id);
+            return $this->repositoryPaciente->delete($input->id);
 
         } catch (\Throwable $th) {
             DB::rollBack();
