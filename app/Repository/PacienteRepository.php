@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Paciente as Models;
+use App\Repository\PaginationPresenter;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Exception;
@@ -50,9 +51,17 @@ class PacienteRepository implements PacienteRepositoryInterface
         return [];
     }
 
-    public function listPacientes(): array
+    public function listPacientes(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter
     {
-        return [];
+        $query = $this->model;
+        if ($filter) {
+            $query = $query->where('name', 'LIKE', "%{$filter}%");
+        }
+        $query = $query->orderBy('id', $order);
+        $paginator = $query->paginate();
+
+        return new PaginationPresenter($paginator);
+        
     }
 
     private function toPacienteEntity(object $object): Paciente

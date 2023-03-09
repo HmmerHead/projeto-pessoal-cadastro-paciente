@@ -7,6 +7,7 @@ use App\Http\Requests\Paciente\UpadateRequest;
 use App\Http\Resources\PacienteResource;
 use App\Models\Paciente;
 use Core\UseCase\Paciente\PacienteUseCase;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PacienteController extends Controller
@@ -14,9 +15,9 @@ class PacienteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, PacienteUseCase $paciente)
     {
-        dd('dsadsa');
+        return $paciente->listarPacientes($request);
     }
 
     /**
