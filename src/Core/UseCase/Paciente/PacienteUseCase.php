@@ -5,6 +5,7 @@ namespace Core\UseCase\Paciente;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class PacienteUseCase
 {
@@ -17,27 +18,41 @@ class PacienteUseCase
 
     public function salvarPaciente($input)
     {
-        $entity = new Paciente(
-            id: '',
-            nome: $input['nome'],
-            nomeMae: $input['nomeMae'],
-            cpf: $input['cpf'],
-            nascimento: Date::parse($input['nascimento'])
-        );
+        try {
+            $entity = new Paciente(
+                id: '',
+                nome: $input['nome'],
+                nomeMae: $input['nomeMae'],
+                cpf: $input['cpf'],
+                nascimento: Date::parse($input['nascimento'])
+            );
 
-        return $this->repository->insert($entity);
+            DB::commit();
+
+            return $this->repository->insert($entity);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
     }
 
     public function alterarPaciente($input, $id)
     {
-        $entity = new Paciente(
-            id: $id,
-            nome: $input['nome'],
-            nomeMae: $input['nomeMae'],
-            cpf: $input['cpf'],
-            nascimento: Date::parse($input['nascimento'])
-        );
+        try {
+            $entity = new Paciente(
+                id: $id,
+                nome: $input['nome'],
+                nomeMae: $input['nomeMae'],
+                cpf: $input['cpf'],
+                nascimento: Date::parse($input['nascimento'])
+            );
 
-        return $this->repository->update($entity);
+            DB::commit();
+            
+            return $this->repository->update($entity);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
     }
 }
