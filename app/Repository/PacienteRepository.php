@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Paciente as Models;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
+use Exception;
 
 class PacienteRepository implements PacienteRepositoryInterface
 {
@@ -27,9 +28,22 @@ class PacienteRepository implements PacienteRepositoryInterface
 
         return $this->toPacienteEntity($modelCreated);
     }
-    public function update(): array
+    public function update($paciente): Paciente
     {
-        return [];
+        if(!$pacienteDb = $this->model->find($paciente->id())){
+            throw new Exception('Paciente não encontrado');
+        }
+
+        $pacienteDb->update([
+            'nome' => $paciente->nome,
+            'nomeMae' => $paciente->nomeMae,
+            'cpf' => $paciente->cpf,
+            'nascimento' => $paciente->nascimento(),
+        ]);
+
+        $pacienteDb->refresh();
+        
+        return $this->toPacienteEntity($pacienteDb);;
     }
     public function listPaciente(): array
     {

@@ -42,9 +42,14 @@ class PacienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpadateRequest $pacienteRequest, Paciente $paciente)
+    public function update(UpadateRequest $pacienteRequest, PacienteUseCase $paciente, $id)
     {
-        //
+
+        $response = $paciente->alterarPaciente($pacienteRequest->toArray(), $id);
+
+        return (new PacienteResource($response))
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
