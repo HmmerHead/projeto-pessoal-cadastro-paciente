@@ -17,12 +17,12 @@ class PacienteTest extends TestCase
         $createdAt = date('Y-m-d H:i:s');
 
         $entity = new Paciente(
-            id: new Uuid($uuid),
             nome: 'nome',
             nomeMae: 'nomeMae',
             cpf: '29308642064',
             nascimento: new DateTime($nascimento),
             createdAt: new DateTime($createdAt),
+            id: new Uuid($uuid),
         );
 
         $this->assertEquals($uuid, $entity->id());
