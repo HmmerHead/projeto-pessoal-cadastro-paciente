@@ -10,4 +10,5 @@ interface CNSRepositoryInterface
     public function update(CNS $cns): void;
     public function delete(string $cnsId): bool;
     public function listCns(string $cnsId): CNS;
+    public function findByCNSPacienteId(string $pacientevvId): CNS;
 }

@@ -26,6 +26,7 @@ class UpadateRequest extends FormRequest
             'nomeMae' => 'required|min:3|max:255',
             'cpf' => 'required',
             'nascimento' => 'required',
+            'cns' => 'required',
         ];
     }
 }

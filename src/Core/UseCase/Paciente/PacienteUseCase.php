@@ -47,6 +47,7 @@ class PacienteUseCase
 
             DB::commit();
 
+            // TODO: adaptar para retornar todos os dados
             return $persistedPaciente;
 
 
@@ -67,9 +68,24 @@ class PacienteUseCase
                 nascimento: Date::parse($input['nascimento'])
             );
 
+            DB::beginTransaction();
+
+            $updatedPaciente = $this->repositoryPaciente->update($entity);
+
+            // TODO Cache
+            $CNSOfUpdatedPaciente = $this->repositoryCns->findByCNSPacienteId($updatedPaciente->id);
+
+            $entityCns = new CNS(
+                id: $CNSOfUpdatedPaciente->id(),
+                paciente_id: $updatedPaciente->id(),
+                cnsPaciente: (string) $input['cns']
+            );
+
+            $this->repositoryCns->update($entityCns);
+
             DB::commit();
 
-            return $this->repositoryPaciente->update($entity);
+            return $updatedPaciente;
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;

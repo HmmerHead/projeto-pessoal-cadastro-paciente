@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('cnsPaciente');
             $table->uuid('paciente_id')->index();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('paciente_id')->references('id')->on('paciente');

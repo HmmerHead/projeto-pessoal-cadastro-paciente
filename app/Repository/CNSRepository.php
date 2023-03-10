@@ -25,21 +25,43 @@ class CNSRepository implements CNSRepositoryInterface
             'cnsPaciente' => $cns->cnsPaciente
         ]);
     }
+
+    public function findByCNSPacienteId($pacienteId): CNS
+    {
+        $Cns = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
+
+        $CnsEntity = new CNS(
+            id: $Cns['id'],
+            cnsPaciente: $Cns['cnsPaciente'],
+            paciente_id: $Cns['paciente_id']
+        );
+
+        return $this->toCnsEntity($CnsEntity);
+    }
+
     public function update($cns): void
     {
-        return $this->toCnsEntity();
+        if(!$cnsDb = $this->model->find($cns->id())){
+            throw new Exception('CNS não encontrado');
+        }
+
+        $cnsDb->update([
+            'cnsPaciente' => $cns->cnsPaciente,
+        ]);
     }
+
     public function listCns($cnsId): CNS
     {
         return $this->toCnsEntity();
     }
 
-    private function toCnsEntity(object $object): CNS
+    private function toCnsEntity($object): CNS
     {
         return new CNS(
             id: $object->id,
-            cnsPaciente: (string) $object->cnsPacient
+            cnsPaciente: $object->cnsPaciente
         );
+
     }
 
     public function delete($cnsId): bool
