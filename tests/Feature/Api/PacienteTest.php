@@ -27,7 +27,8 @@ class PacienteTest extends TestCase
             'cpf' => '29308642064',
             'nascimento' => now(),
             'createdAt' =>now(),
-            'cns' => '10',
+            'cns' => '153638180670009',
+            'foto' => '10',
         ];
 
         $response = $this->postJson($this->endpoint, $data);
