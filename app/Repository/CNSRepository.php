@@ -50,11 +50,6 @@ class CNSRepository implements CNSRepositoryInterface
         ]);
     }
 
-    public function listCns($cnsId): CNS
-    {
-        return $this->toCnsEntity();
-    }
-
     private function toCnsEntity($object): CNS
     {
         return new CNS(
