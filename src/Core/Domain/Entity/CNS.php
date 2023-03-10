@@ -12,7 +12,7 @@ class CNS
 
     public function __construct(
         protected string $cnsPaciente,
-        protected Uuid|string $id = '',
+        protected string $id = '',
         protected string $paciente_id = '',
 
     ) {

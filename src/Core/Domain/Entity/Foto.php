@@ -11,7 +11,7 @@ class Foto
 
     public function __construct(
         protected string $fotoPaciente,
-        protected Uuid|string $id = '',
+        protected string $id = '',
         protected string $paciente_id = '',
 
     ) {

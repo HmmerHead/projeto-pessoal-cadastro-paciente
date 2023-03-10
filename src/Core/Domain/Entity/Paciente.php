@@ -18,7 +18,7 @@ class Paciente
         protected DateTime $nascimento,
         protected ?DateTime $createdAt = null,
         protected ?DateTime $deletedAt = null,
-        protected Uuid|string $id = '',
+        protected string $id = '',
 
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::generate();
