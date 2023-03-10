@@ -12,6 +12,8 @@ class Paciente extends Model
     use HasFactory, SoftDeletes;
 
     protected $table = 'paciente';
+
+    protected $touches = ['CNS'];
     
     protected $fillable = [
         'id',
