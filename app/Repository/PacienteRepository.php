@@ -6,6 +6,7 @@ use App\Models\Paciente as Models;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 class PacienteRepository implements PacienteRepositoryInterface
 {
@@ -56,12 +57,18 @@ class PacienteRepository implements PacienteRepositoryInterface
 
     public function listPacientes(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter
     {
+        if (Cache::store('redis')->has($this->model::CACHE_LISTA_COMPLETA_PACIENTES)) {
+            return new PaginationPresenter(Cache::store('redis')->get($this->model::CACHE_LISTA_COMPLETA_PACIENTES));
+        }
+
         $query = $this->model;
         if ($filter) {
             $query = $query->where('name', 'LIKE', "%{$filter}%");
         }
         $query = $query->orderBy('id', $order);
         $paginator = $query->paginate();
+
+        Cache::store('redis')->put($this->model::CACHE_LISTA_COMPLETA_PACIENTES, $paginator, 600);
 
         return new PaginationPresenter($paginator);
     }

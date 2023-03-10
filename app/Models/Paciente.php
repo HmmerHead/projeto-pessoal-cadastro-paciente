@@ -11,6 +11,8 @@ class Paciente extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const CACHE_LISTA_COMPLETA_PACIENTES = 'lista-completa-pacientes';
+
     protected $table = 'paciente';
 
     protected $touches = ['CNS'];
