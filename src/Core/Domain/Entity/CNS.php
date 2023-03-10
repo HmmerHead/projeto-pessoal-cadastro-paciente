@@ -4,6 +4,7 @@ namespace Core\Domain\Entity;
 
 use Core\Domain\Traits\MetodoMagicoTrait;
 use Core\Domain\ValueObject\Uuid;
+use Core\Domain\ValueObject\CNS as ValurObjectCNS;
 
 class CNS
 {
@@ -17,12 +18,11 @@ class CNS
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::generate();
 
-        $this->isValid($this->id);
+        $this->isValid();
     }
 
-    private function isValid($cnsInput)
+    private function isValid()
     {
-        //TODO: VALIDACAO
-        return true;
+        new ValurObjectCNS($this->cnsPaciente);
     }
 }
