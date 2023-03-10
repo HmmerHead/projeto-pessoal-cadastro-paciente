@@ -27,6 +27,7 @@ class CreateRequest extends FormRequest
             'cpf' => 'required',
             'nascimento' => 'required',
             'cns' => 'required',
+            'foto' => 'required|file',
         ];
     }
 }

@@ -4,11 +4,15 @@ namespace App\Repository;
 
 use App\Models\Foto as Models;
 use Core\Domain\Entity\Foto;
+use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\FotoRepositoryInterface;
 use Exception;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class FotoRepository implements FotoRepositoryInterface
 {
+    const PATH = 'pacienteFoto/';
     protected $model;
 
     public function __construct(Models $cns)
@@ -60,5 +64,25 @@ class FotoRepository implements FotoRepositoryInterface
     public function delete($pacienteId): bool
     {
         return $this->model->where('paciente_id', $pacienteId)->delete();
+    }
+    /**
+     * Undocumented function
+     *
+     * @param UploadedFile $foto
+     * @param Paciente $pacienteId
+     * @return string
+     */
+    public function salveFotoStorage($foto, $paciente): string
+    {
+        $path = self::PATH . $paciente->id();
+        $nameFile = $paciente->nome . '.' . $foto->getClientOriginalExtension();
+        $foto->storeAs($path, $nameFile);
+
+        return $path . '/' . $nameFile;
+    }
+
+    public function removerFotoStorage($pacienteId): bool
+    {
+        return Storage::deleteDirectory($path = self::PATH . $pacienteId);
     }
 }

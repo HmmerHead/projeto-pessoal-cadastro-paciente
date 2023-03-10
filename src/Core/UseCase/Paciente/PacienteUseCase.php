@@ -49,8 +49,10 @@ class PacienteUseCase
 
             $this->repositoryCns->insert($entityCns);
 
+            $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $entityPaciente);
+
             $entityFoto = new Foto(
-                fotoPaciente: (string) $input['foto'],
+                fotoPaciente: $path,
                 paciente_id: $persistedPaciente->id()
             );
 
@@ -93,6 +95,10 @@ class PacienteUseCase
             $this->repositoryCns->update($entityCns);
 
             $FotoOfUpdatedPaciente = $this->repositoryFoto->findByCNSPacienteId($updatedPaciente->id);
+
+            $this->repositoryFoto->removerFotoStorage($updatedPaciente->id);
+
+            $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $updatedPaciente);
 
             $entityFoto = new Foto(
                 id: $FotoOfUpdatedPaciente->id(),

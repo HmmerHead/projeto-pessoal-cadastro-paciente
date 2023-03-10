@@ -3,6 +3,7 @@
 namespace Core\UseCase\Repository;
 
 use Core\Domain\Entity\Foto;
+use Core\Domain\Entity\Paciente;
 
 interface FotoRepositoryInterface
 {
@@ -10,4 +11,6 @@ interface FotoRepositoryInterface
     public function update(Foto $cns): void;
     public function delete(string $pacienteId): bool;
     public function findByCNSPacienteId(string $pacienteId): Foto;
+    public function salveFotoStorage($foto, Paciente $entityPaciente): string;
+    public function removerFotoStorage(string $pacienteId): bool;
 }
