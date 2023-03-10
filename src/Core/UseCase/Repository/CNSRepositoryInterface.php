@@ -8,7 +8,7 @@ interface CNSRepositoryInterface
 {
     public function insert(CNS $cns): void;
     public function update(CNS $cns): void;
-    public function delete(string $cnsId): bool;
+    public function delete(string $pacienteId): bool;
     public function listCns(string $cnsId): CNS;
-    public function findByCNSPacienteId(string $pacientevvId): CNS;
+    public function findByCNSPacienteId(string $pacienteId): CNS;
 }

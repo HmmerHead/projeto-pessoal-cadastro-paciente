@@ -64,8 +64,8 @@ class CNSRepository implements CNSRepositoryInterface
 
     }
 
-    public function delete($cnsId): bool
-    {
-        return true;
+    public function delete($pacienteId): bool
+    {       
+        return $this->model->where('paciente_id', $pacienteId)->delete();
     }
 }

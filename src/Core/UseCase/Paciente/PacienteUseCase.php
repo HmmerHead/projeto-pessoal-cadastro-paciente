@@ -121,8 +121,15 @@ class PacienteUseCase
     public function deletarPaciente($input): bool
     {
         try {
+
+            DB::beginTransaction();
+
+            $this->repositoryPaciente->delete($input->id);
+
+            $this->repositoryCns->delete($input->id);
+
             DB::commit();
-            return $this->repositoryPaciente->delete($input->id);
+            return true;
 
         } catch (\Throwable $th) {
             DB::rollBack();
