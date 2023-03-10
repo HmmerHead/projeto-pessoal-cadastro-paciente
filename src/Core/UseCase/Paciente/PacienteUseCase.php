@@ -3,9 +3,11 @@
 namespace Core\UseCase\Paciente;
 
 use Core\Domain\Entity\CNS;
+use Core\Domain\Entity\Foto;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\CNSRepositoryInterface;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
+use Core\UseCase\Repository\FotoRepositoryInterface;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
@@ -13,12 +15,15 @@ class PacienteUseCase
 {
     protected $repositoryPaciente;
     protected $repositoryCns;
+    protected $repositoryFoto;
 
     public function __construct(
         PacienteRepositoryInterface $repositoryPaciente,
+        FotoRepositoryInterface $repositoryFoto,
         CNSRepositoryInterface $repositoryCns
     ) {
         $this->repositoryPaciente = $repositoryPaciente;
+        $this->repositoryFoto = $repositoryFoto;
         $this->repositoryCns = $repositoryCns;
     }
 
@@ -43,6 +48,13 @@ class PacienteUseCase
             );
 
             $this->repositoryCns->insert($entityCns);
+
+            $entityFoto = new Foto(
+                fotoPaciente: (string) $input['foto'],
+                paciente_id: $persistedPaciente->id()
+            );
+
+            $this->repositoryFoto->insert($entityFoto);
 
             DB::commit();
 
@@ -79,6 +91,16 @@ class PacienteUseCase
             );
 
             $this->repositoryCns->update($entityCns);
+
+            $FotoOfUpdatedPaciente = $this->repositoryFoto->findByCNSPacienteId($updatedPaciente->id);
+
+            $entityFoto = new Foto(
+                id: $FotoOfUpdatedPaciente->id(),
+                paciente_id: $updatedPaciente->id(),
+                fotoPaciente: (string) $input['foto']
+            );
+
+            $this->repositoryFoto->update($entityFoto);
 
             DB::commit();
 
@@ -124,6 +146,8 @@ class PacienteUseCase
             $this->repositoryPaciente->delete($input->id);
 
             $this->repositoryCns->delete($input->id);
+
+            $this->repositoryFoto->delete($input->id);
 
             DB::commit();
             return true;

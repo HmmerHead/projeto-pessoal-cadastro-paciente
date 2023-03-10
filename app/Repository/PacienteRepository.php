@@ -42,8 +42,6 @@ class PacienteRepository implements PacienteRepositoryInterface
             'nascimento' => $paciente->nascimento(),
         ]);
 
-        $pacienteDb->refresh();
-
         return $this->toPacienteEntity($pacienteDb);
     }
     public function listPaciente($pacienteId): Paciente
