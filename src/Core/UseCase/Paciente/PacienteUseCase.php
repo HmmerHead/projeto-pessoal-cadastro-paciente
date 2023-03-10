@@ -44,25 +44,12 @@ class PacienteUseCase
 
             $persistedPaciente = $this->repositoryPaciente->insert($entityPaciente);
 
-            $entityCns = new CNS(
-                cnsPaciente: (string) $input['cns'],
-                paciente_id: $persistedPaciente->id()
-            );
+            $this->cadastrarCNS($persistedPaciente, $input);
 
-            $this->repositoryCns->insert($entityCns);
-
-            $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $entityPaciente);
-
-            $entityFoto = new Foto(
-                fotoPaciente: $path,
-                paciente_id: $persistedPaciente->id()
-            );
-
-            $this->repositoryFoto->insert($entityFoto);
+            $this->cadastrarFoto($persistedPaciente, $entityPaciente, $input);
 
             DB::commit();
 
-            // TODO: adaptar para retornar todos os dados
             return $persistedPaciente;
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -85,30 +72,9 @@ class PacienteUseCase
 
             $updatedPaciente = $this->repositoryPaciente->update($entity);
 
-            // TODO Cache
-            $CNSOfUpdatedPaciente = $this->repositoryCns->findByCNSPacienteId($updatedPaciente->id);
+            $this->editarCNS($updatedPaciente, $input);
 
-            $entityCns = new CNS(
-                id: $CNSOfUpdatedPaciente->id(),
-                paciente_id: $updatedPaciente->id(),
-                cnsPaciente: (string) $input['cns']
-            );
-
-            $this->repositoryCns->update($entityCns);
-
-            $FotoOfUpdatedPaciente = $this->repositoryFoto->findByCNSPacienteId($updatedPaciente->id);
-
-            $this->repositoryFoto->removerFotoStorage($updatedPaciente->id);
-
-            $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $updatedPaciente);
-
-            $entityFoto = new Foto(
-                id: $FotoOfUpdatedPaciente->id(),
-                paciente_id: $updatedPaciente->id(),
-                fotoPaciente: (string) $input['foto']
-            );
-
-            $this->repositoryFoto->update($entityFoto);
+            $this->editarFoto($updatedPaciente, $input);
 
             DB::commit();
 
@@ -163,5 +129,57 @@ class PacienteUseCase
             DB::rollBack();
             throw $th;
         }
+    }
+
+    private function cadastrarCNS($persistedPaciente, $input): void
+    {
+        $entityCns = new CNS(
+            cnsPaciente: (string) $input['cns'],
+            paciente_id: $persistedPaciente->id()
+        );
+
+        $this->repositoryCns->insert($entityCns);
+    }
+
+    private function cadastrarFoto($persistedPaciente, $entityPaciente, $input): void
+    {
+        $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $entityPaciente);
+
+        $entityFoto = new Foto(
+            fotoPaciente: $path,
+            paciente_id: $persistedPaciente->id()
+        );
+
+        $this->repositoryFoto->insert($entityFoto);
+    }
+
+    private function editarCNS($updatedPaciente, $input): void
+    {
+        $CNSOfUpdatedPaciente = $this->repositoryCns->findByCNSPacienteId($updatedPaciente->id);
+
+        $entityCns = new CNS(
+            id: $CNSOfUpdatedPaciente->id(),
+            paciente_id: $updatedPaciente->id(),
+            cnsPaciente: (string) $input['cns']
+        );
+
+        $this->repositoryCns->update($entityCns);
+    }
+
+    private function editarFoto($updatedPaciente, $input): void
+    {
+        $FotoOfUpdatedPaciente = $this->repositoryFoto->findByCNSPacienteId($updatedPaciente->id);
+
+        $this->repositoryFoto->removerFotoStorage($updatedPaciente->id);
+
+        $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $updatedPaciente);
+
+        $entityFoto = new Foto(
+            id: $FotoOfUpdatedPaciente->id(),
+            paciente_id: $updatedPaciente->id(),
+            fotoPaciente: $path
+        );
+
+        $this->repositoryFoto->update($entityFoto);
     }
 }
