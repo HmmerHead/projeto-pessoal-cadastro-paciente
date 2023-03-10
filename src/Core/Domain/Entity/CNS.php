@@ -3,8 +3,8 @@
 namespace Core\Domain\Entity;
 
 use Core\Domain\Traits\MetodoMagicoTrait;
-use Core\Domain\ValueObject\Uuid;
 use Core\Domain\ValueObject\CNS as ValurObjectCNS;
+use Core\Domain\ValueObject\Uuid;
 
 class CNS
 {

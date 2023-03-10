@@ -16,7 +16,7 @@ class Foto extends Model
     protected $fillable = [
         'id',
         'fotoPaciente',
-        'paciente_id'
+        'paciente_id',
     ];
 
     public $incrementing = false;

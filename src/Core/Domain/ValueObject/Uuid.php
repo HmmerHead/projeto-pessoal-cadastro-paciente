@@ -25,7 +25,8 @@ class Uuid
 
     private function isValid(string $id): void
     {
-        if (!RamseyUuid::isValid($id))
+        if (! RamseyUuid::isValid($id)) {
             throw new Exception(sprintf('Valor informado não permitido: <%s> - <%s>.', static::class, $id));
+        }
     }
 }

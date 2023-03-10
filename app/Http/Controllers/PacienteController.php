@@ -17,7 +17,7 @@ class PacienteController extends Controller
      */
     public function index(Request $request, PacienteUseCase $paciente)
     {
-        $response =  $paciente->listarPacientes($request);
+        $response = $paciente->listarPacientes($request);
 
         return PacienteResource::collection($response['items'])
             ->additional([
@@ -29,7 +29,7 @@ class PacienteController extends Controller
                     'per_page' => $response['per_page'],
                     'to' => $response['to'],
                     'from' => $response['from'],
-                ]
+                ],
             ]);
     }
 
@@ -62,7 +62,6 @@ class PacienteController extends Controller
      */
     public function update(UpadateRequest $pacienteRequest, PacienteUseCase $paciente, $id)
     {
-
         $response = $paciente->alterarPaciente($pacienteRequest->toArray(), $id);
 
         return (new PacienteResource($response))

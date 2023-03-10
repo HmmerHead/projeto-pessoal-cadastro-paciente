@@ -9,7 +9,7 @@ class Documento
     public function __construct(
         protected string $value
     ) {
-        if (!$this->isValid($value)){
+        if (! $this->isValid($value)) {
             throw new Exception('Documento Invalido');
         }
     }
@@ -21,8 +21,8 @@ class Documento
 
     private function isValid(string $cpf): bool
     {
-        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
-        
+        $cpf = preg_replace('/[^0-9]/is', '', $cpf);
+
         if (strlen($cpf) != 11) {
             return false;
         }
@@ -40,6 +40,7 @@ class Documento
                 return false;
             }
         }
+
         return true;
     }
 }

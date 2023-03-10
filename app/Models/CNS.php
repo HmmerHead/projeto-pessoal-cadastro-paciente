@@ -16,7 +16,7 @@ class CNS extends Model
     protected $fillable = [
         'id',
         'cnsPaciente',
-        'paciente_id'
+        'paciente_id',
     ];
 
     public $incrementing = false;

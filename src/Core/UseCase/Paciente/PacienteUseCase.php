@@ -6,15 +6,17 @@ use Core\Domain\Entity\CNS;
 use Core\Domain\Entity\Foto;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\CNSRepositoryInterface;
-use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Core\UseCase\Repository\FotoRepositoryInterface;
+use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class PacienteUseCase
 {
     protected $repositoryPaciente;
+
     protected $repositoryCns;
+
     protected $repositoryFoto;
 
     public function __construct(
@@ -146,7 +148,6 @@ class PacienteUseCase
     public function deletarPaciente($input): bool
     {
         try {
-
             DB::beginTransaction();
 
             $this->repositoryPaciente->delete($input->id);
@@ -156,6 +157,7 @@ class PacienteUseCase
             $this->repositoryFoto->delete($input->id);
 
             DB::commit();
+
             return true;
         } catch (\Throwable $th) {
             DB::rollBack();

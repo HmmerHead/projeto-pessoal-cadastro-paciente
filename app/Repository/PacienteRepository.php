@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Models\Paciente as Models;
-use App\Repository\PaginationPresenter;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Exception;
@@ -29,9 +28,10 @@ class PacienteRepository implements PacienteRepositoryInterface
 
         return $this->toPacienteEntity($modelCreated);
     }
+
     public function update($paciente): Paciente
     {
-        if (!$pacienteDb = $this->model->find($paciente->id())) {
+        if (! $pacienteDb = $this->model->find($paciente->id())) {
             throw new Exception('Paciente não encontrado');
         }
 
@@ -44,9 +44,10 @@ class PacienteRepository implements PacienteRepositoryInterface
 
         return $this->toPacienteEntity($pacienteDb);
     }
+
     public function listPaciente($pacienteId): Paciente
     {
-        if (!$pacienteDB = $this->model->find($pacienteId)) {
+        if (! $pacienteDB = $this->model->find($pacienteId)) {
             throw new Exception('Paciente não encontrado');
         }
 
@@ -79,7 +80,7 @@ class PacienteRepository implements PacienteRepositoryInterface
 
     public function delete($pacienteId): bool
     {
-        if (!$pacienteDb = $this->model->find($pacienteId)) {
+        if (! $pacienteDb = $this->model->find($pacienteId)) {
             throw new Exception('Category Not Found');
         }
 

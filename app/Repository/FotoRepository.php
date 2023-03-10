@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 class FotoRepository implements FotoRepositoryInterface
 {
     const PATH = 'pacienteFoto/';
+
     protected $model;
 
     public function __construct(Models $cns)
@@ -25,7 +26,7 @@ class FotoRepository implements FotoRepositoryInterface
         $this->model->create([
             'id' => $foto->id(),
             'paciente_id' => $foto->paciente_id,
-            'fotoPaciente' => $foto->fotoPaciente
+            'fotoPaciente' => $foto->fotoPaciente,
         ]);
     }
 
@@ -44,7 +45,7 @@ class FotoRepository implements FotoRepositoryInterface
 
     public function update($foto): void
     {
-        if (!$fotoDb = $this->model->find($foto->id())) {
+        if (! $fotoDb = $this->model->find($foto->id())) {
             throw new Exception('Foto não encontrado');
         }
 
@@ -65,24 +66,24 @@ class FotoRepository implements FotoRepositoryInterface
     {
         return $this->model->where('paciente_id', $pacienteId)->delete();
     }
+
     /**
      * Undocumented function
      *
-     * @param UploadedFile $foto
-     * @param Paciente $pacienteId
-     * @return string
+     * @param  UploadedFile  $foto
+     * @param  Paciente  $pacienteId
      */
     public function salveFotoStorage($foto, $paciente): string
     {
-        $path = self::PATH . $paciente->id();
-        $nameFile = $paciente->nome . '.' . $foto->getClientOriginalExtension();
+        $path = self::PATH.$paciente->id();
+        $nameFile = $paciente->nome.'.'.$foto->getClientOriginalExtension();
         $foto->storeAs($path, $nameFile);
 
-        return $path . '/' . $nameFile;
+        return $path.'/'.$nameFile;
     }
 
     public function removerFotoStorage($pacienteId): bool
     {
-        return Storage::deleteDirectory($path = self::PATH . $pacienteId);
+        return Storage::deleteDirectory($path = self::PATH.$pacienteId);
     }
 }

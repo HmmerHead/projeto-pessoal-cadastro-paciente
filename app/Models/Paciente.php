@@ -14,7 +14,7 @@ class Paciente extends Model
     protected $table = 'paciente';
 
     protected $touches = ['CNS'];
-    
+
     protected $fillable = [
         'id',
         'nome',

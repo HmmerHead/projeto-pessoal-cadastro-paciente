@@ -9,7 +9,7 @@ class CNS
     public function __construct(
         protected string $value
     ) {
-        if (!$this->isValid($value)) {
+        if (! $this->isValid($value)) {
             throw new Exception('CNS Invalido');
         }
     }
@@ -29,7 +29,7 @@ class CNS
 
         $acao = substr($pis, 0, 1);
 
-        switch ($acao):
+        switch ($acao) {
             case '1':
             case '2':
                 $ret = self::validaCns($cns);
@@ -45,15 +45,15 @@ class CNS
                 break;
             default:
                 $ret = false;
-        endswitch;
+        }
 
         return $ret;
     }
 
     private function validaCns(string $pis)
     {
-        $pis = "";
-        $resultado = "";
+        $pis = '';
+        $resultado = '';
 
         $soma = ((int) substr($pis, 0, 1) * 15) +
             ((int) substr($pis, 1, 2) * 14) +
@@ -89,12 +89,12 @@ class CNS
 
             $resto = $soma % 11;
             $dv = 11 - $resto;
-            $resultado = $pis . "001" . (string) $dv;
+            $resultado = $pis.'001'.(string) $dv;
         } else {
-            $resultado = $pis . "000" . (string) $dv;
+            $resultado = $pis.'000'.(string) $dv;
         }
 
-        if (!$pis === $resultado) {
+        if (! $pis === $resultado) {
             return false;
         } else {
             return true;
