@@ -9,7 +9,7 @@ class CNS
     public function __construct(
         protected string $value
     ) {
-        if (!$this->isValid($value)){
+        if (!$this->isValid($value)) {
             throw new Exception('CNS Invalido');
         }
     }
@@ -25,7 +25,7 @@ class CNS
 
         if (strlen($cns) != 15) {
             return false;
-        }        
+        }
 
         $acao = substr($pis, 0, 1);
 

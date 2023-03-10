@@ -31,7 +31,7 @@ class PacienteRepository implements PacienteRepositoryInterface
     }
     public function update($paciente): Paciente
     {
-        if(!$pacienteDb = $this->model->find($paciente->id())){
+        if (!$pacienteDb = $this->model->find($paciente->id())) {
             throw new Exception('Paciente não encontrado');
         }
 
@@ -43,7 +43,7 @@ class PacienteRepository implements PacienteRepositoryInterface
         ]);
 
         $pacienteDb->refresh();
-        
+
         return $this->toPacienteEntity($pacienteDb);
     }
     public function listPaciente($pacienteId): Paciente
@@ -65,7 +65,6 @@ class PacienteRepository implements PacienteRepositoryInterface
         $paginator = $query->paginate();
 
         return new PaginationPresenter($paginator);
-        
     }
 
     private function toPacienteEntity(object $object): Paciente
@@ -85,7 +84,7 @@ class PacienteRepository implements PacienteRepositoryInterface
         if (!$pacienteDb = $this->model->find($pacienteId)) {
             throw new Exception('Category Not Found');
         }
-        
+
         return $pacienteDb->delete();
     }
 }

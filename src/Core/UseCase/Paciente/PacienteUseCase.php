@@ -17,8 +17,7 @@ class PacienteUseCase
     public function __construct(
         PacienteRepositoryInterface $repositoryPaciente,
         CNSRepositoryInterface $repositoryCns
-        )
-    {
+    ) {
         $this->repositoryPaciente = $repositoryPaciente;
         $this->repositoryCns = $repositoryCns;
     }
@@ -49,8 +48,6 @@ class PacienteUseCase
 
             // TODO: adaptar para retornar todos os dados
             return $persistedPaciente;
-
-
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -95,9 +92,9 @@ class PacienteUseCase
     public function listarPacientes($input)
     {
         $result = $this->repositoryPaciente->listPacientes(
-            filter: $input->get('filter', ''), 
-            order: $input->get('order', 'DESC'), 
-            page: $input->get('page', 1), 
+            filter: $input->get('filter', ''),
+            order: $input->get('order', 'DESC'),
+            page: $input->get('page', 1),
             totalPage: $input->get('totalPage', 15)
         );
 
@@ -130,7 +127,6 @@ class PacienteUseCase
 
             DB::commit();
             return true;
-
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;

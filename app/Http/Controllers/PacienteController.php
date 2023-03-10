@@ -20,17 +20,17 @@ class PacienteController extends Controller
         $response =  $paciente->listarPacientes($request);
 
         return PacienteResource::collection($response['items'])
-                                    ->additional([
-                                        'meta' => [
-                                            'total' => $response['total'],
-                                            'current_page' => $response['current_page'],
-                                            'last_page' => $response['last_page'],
-                                            'first_page' => $response['first_page'],
-                                            'per_page' => $response['per_page'],
-                                            'to' => $response['to'],
-                                            'from' => $response['from'],
-                                        ]
-                                    ]);
+            ->additional([
+                'meta' => [
+                    'total' => $response['total'],
+                    'current_page' => $response['current_page'],
+                    'last_page' => $response['last_page'],
+                    'first_page' => $response['first_page'],
+                    'per_page' => $response['per_page'],
+                    'to' => $response['to'],
+                    'from' => $response['from'],
+                ]
+            ]);
     }
 
     /**
@@ -41,8 +41,8 @@ class PacienteController extends Controller
         $response = $paciente->salvarPaciente($pacienteRequest->toArray());
 
         return (new PacienteResource($response))
-                    ->response()
-                    ->setStatusCode(Response::HTTP_CREATED);
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
@@ -53,8 +53,8 @@ class PacienteController extends Controller
         $response = $pacienteUseCase->listarPaciente($paciente);
 
         return (new PacienteResource($response))
-        ->response()
-        ->setStatusCode(Response::HTTP_CREATED);
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**

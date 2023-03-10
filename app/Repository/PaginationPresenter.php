@@ -8,8 +8,8 @@ use stdClass;
 class PaginationPresenter
 {
     /**
-    * @return stdClass[]
-    */
+     * @return stdClass[]
+     */
     protected array $items = [];
 
     public function __construct(

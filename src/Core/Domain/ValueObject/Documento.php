@@ -6,8 +6,6 @@ use Exception;
 
 class Documento
 {
-    // criacao/validacao documento
-
     public function __construct(
         protected string $value
     ) {

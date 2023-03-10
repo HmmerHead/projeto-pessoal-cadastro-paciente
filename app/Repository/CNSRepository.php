@@ -41,7 +41,7 @@ class CNSRepository implements CNSRepositoryInterface
 
     public function update($cns): void
     {
-        if(!$cnsDb = $this->model->find($cns->id())){
+        if (!$cnsDb = $this->model->find($cns->id())) {
             throw new Exception('CNS não encontrado');
         }
 
@@ -56,11 +56,10 @@ class CNSRepository implements CNSRepositoryInterface
             id: $object->id,
             cnsPaciente: $object->cnsPaciente
         );
-
     }
 
     public function delete($pacienteId): bool
-    {       
+    {
         return $this->model->where('paciente_id', $pacienteId)->delete();
     }
 }
