@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Models\CNS as Models;
-use App\Repository\PaginationPresenter;
 use Core\Domain\Entity\CNS;
 use Core\UseCase\Repository\CNSRepositoryInterface;
 use Exception;
