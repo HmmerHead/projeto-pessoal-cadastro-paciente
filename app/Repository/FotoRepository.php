@@ -16,36 +16,36 @@ class FotoRepository implements FotoRepositoryInterface
         $this->model = $cns;
     }
 
-    public function insert($cns): void
+    public function insert($foto): void
     {
         $this->model->create([
-            'id' => $cns->id(),
-            'paciente_id' => $cns->paciente_id,
-            'fotoPaciente' => $cns->fotoPaciente
+            'id' => $foto->id(),
+            'paciente_id' => $foto->paciente_id,
+            'fotoPaciente' => $foto->fotoPaciente
         ]);
     }
 
     public function findByCNSPacienteId($pacienteId): Foto
     {
-        $Cns = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
+        $foto = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
 
-        $CnsEntity = new Foto(
-            id: $Cns['id'],
-            fotoPaciente: $Cns['fotoPaciente'],
-            paciente_id: $Cns['paciente_id']
+        $fotoEntity = new Foto(
+            id: $foto['id'],
+            fotoPaciente: $foto['fotoPaciente'],
+            paciente_id: $foto['paciente_id']
         );
 
-        return $this->toFotoEntity($CnsEntity);
+        return $this->toFotoEntity($fotoEntity);
     }
 
-    public function update($cns): void
+    public function update($foto): void
     {
-        if (!$cnsDb = $this->model->find($cns->id())) {
-            throw new Exception('CNS não encontrado');
+        if (!$fotoDb = $this->model->find($foto->id())) {
+            throw new Exception('Foto não encontrado');
         }
 
-        $cnsDb->update([
-            'fotoPaciente' => $cns->fotoPaciente,
+        $fotoDb->update([
+            'fotoPaciente' => $foto->fotoPaciente,
         ]);
     }
 
