@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\Paciente;
 use League\Csv\Reader;
-use App\Http\Requests\importarPacientesRequest;
+use App\Jobs\ImportacaoArquivosJob;
 use Core\UseCase\Paciente\PacienteUseCase;
 use Illuminate\Http\Request;
 
@@ -15,7 +14,7 @@ class importarPacientesController extends Controller
      */
     public function __invoke(Request $request, PacienteUseCase $paciente)
     {
-
+        
         $csv = Reader::createFromPath($request->file('file'), 'r');
 
         if (empty($csv->nth(1))){
@@ -23,10 +22,10 @@ class importarPacientesController extends Controller
         }
         
         $csv->setHeaderOffset(0);
-        $records = $csv->getRecords(); //returns all the CSV records as an Iterator object
+        $records = $csv->getRecords();
 
-        foreach ($records as $record) {           
-            $paciente->salvarPaciente($record);
+        foreach ($records as $record) {        
+            ImportacaoArquivosJob::dispatch($record, $paciente);
         }
     }
 }

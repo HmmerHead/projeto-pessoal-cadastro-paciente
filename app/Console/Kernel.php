@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('cache:clear redis')
             ->everySixHours();
+        $schedule->command('queue:prune-failed')
+            ->daily();
     }
 
     /**
