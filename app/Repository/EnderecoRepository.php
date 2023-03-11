@@ -20,15 +20,31 @@ class EnderecoRepository implements EnderecoRepositoryInterface
     {
         $this->model->create([
             'id' => $endereco->id(),
+            'cep' => $endereco->cep,
+            'endereço' => $endereco->endereço,
+            'numero' => $endereco->numero,
+            'complemento' => $endereco->complemento,
+            'bairro' => $endereco->bairro,
+            'cidade' => $endereco->cidade,
+            'estado' => $endereco->estado,
+            'paciente_id' => $endereco->paciente_id,
         ]);
     }
 
-    public function findByCep(string $cep): Endereco
+    public function findByEnderecoByPacienteId(string $paciente_id): Endereco
     {
-        $endereco = current($this->model->where('paciente_id', $cep)->get()->toArray());
+        $endereco = current($this->model->where('paciente_id', $paciente_id)->get()->toArray());
 
         $enderecoEntity = new Endereco(
             id: $endereco['id'],
+            cep: $endereco['cep'],
+            endereço: $endereco['endereço'],
+            numero: $endereco['numero'],
+            complemento: $endereco['complemento'],
+            bairro: $endereco['bairro'],
+            cidade: $endereco['cidade'],
+            estado: $endereco['estado'],
+            paciente_id: $endereco['paciente_id'],
         );
 
         return $this->toEnderecoEntity($enderecoEntity);
@@ -41,7 +57,15 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         }
 
         $endedrecoDb->update([
-
+            'id' => $endereco->id(),
+            'cep' => $endereco->cep,
+            'endereço' => $endereco->endereço,
+            'numero' => $endereco->numero,
+            'complemento' => $endereco->complemento,
+            'bairro' => $endereco->bairro,
+            'cidade' => $endereco->cidade,
+            'estado' => $endereco->estado,
+            'paciente_id' => $endereco->paciente_id,
         ]);
     }
 
@@ -49,6 +73,14 @@ class EnderecoRepository implements EnderecoRepositoryInterface
     {
         return new Endereco(
             id: $object->id,
+            cep: $object->cep,
+            endereço: $object->endereço,
+            numero: $object->numero,
+            complemento: $object->complemento,
+            bairro: $object->bairro,
+            cidade: $object->cidade,
+            estado: $object->estado,
+            paciente_id: $object->paciente_id,
         );
     }
 

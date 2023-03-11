@@ -28,6 +28,13 @@ class UpadateRequest extends FormRequest
             'nascimento' => 'required',
             'cns' => 'required',
             'foto' => 'required',
+            'cep' => 'required',
+            'endereco' => 'required',
+            'numero' => 'required',
+            'complemento' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'estado' => 'required',
         ];
     }
 }

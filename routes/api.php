@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsultaEnderecoViaCepController;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('/pacientes', PacienteController::class);
+
+Route::get('/ConsultaEnderecoViaCep', ConsultaEnderecoViaCepController::class);

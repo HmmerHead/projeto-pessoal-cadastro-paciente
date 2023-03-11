@@ -28,6 +28,13 @@ class CreateRequest extends FormRequest
             'nascimento' => 'required',
             'cns' => 'required',
             'foto' => 'required|file',
+            'cep' => 'required',
+            'endereço' => 'required',
+            'numero' => 'required',
+            'complemento' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'estado' => 'required',
         ];
     }
 }

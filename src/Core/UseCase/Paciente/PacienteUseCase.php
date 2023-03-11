@@ -3,11 +3,14 @@
 namespace Core\UseCase\Paciente;
 
 use Core\Domain\Entity\CNS;
+use Core\Domain\Entity\Endereco;
 use Core\Domain\Entity\Foto;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\CNSRepositoryInterface;
 use Core\UseCase\Repository\FotoRepositoryInterface;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
+use Core\UseCase\Repository\EnderecoRepositoryInterface;
+use Exception;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
@@ -19,14 +22,18 @@ class PacienteUseCase
 
     protected $repositoryFoto;
 
+    protected $repositoryEndereco;
+
     public function __construct(
         PacienteRepositoryInterface $repositoryPaciente,
         FotoRepositoryInterface $repositoryFoto,
-        CNSRepositoryInterface $repositoryCns
+        CNSRepositoryInterface $repositoryCns,
+        EnderecoRepositoryInterface $repositoryEndereco
     ) {
         $this->repositoryPaciente = $repositoryPaciente;
         $this->repositoryFoto = $repositoryFoto;
         $this->repositoryCns = $repositoryCns;
+        $this->repositoryEndereco = $repositoryEndereco;
     }
 
     public function salvarPaciente($input)
@@ -47,6 +54,8 @@ class PacienteUseCase
             $this->cadastrarCNS($persistedPaciente, $input);
 
             $this->cadastrarFoto($persistedPaciente, $entityPaciente, $input);
+
+            $this->cadastrarEndereco($persistedPaciente, $input);
 
             DB::commit();
 
@@ -75,6 +84,8 @@ class PacienteUseCase
             $this->editarCNS($updatedPaciente, $input);
 
             $this->editarFoto($updatedPaciente, $input);
+
+            $this->editarEndereco($updatedPaciente, $input);
 
             DB::commit();
 
@@ -122,6 +133,8 @@ class PacienteUseCase
 
             $this->repositoryFoto->delete($input->id);
 
+            $this->repositoryEndereco->delete($input->id);
+
             DB::commit();
 
             return true;
@@ -129,6 +142,53 @@ class PacienteUseCase
             DB::rollBack();
             throw $th;
         }
+    }
+
+    private function cadastrarEndereco($persistedPaciente, $input)
+    {
+        $cep = $input['cep'];
+
+        if (!preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
+            throw new Exception('CEP invalido');
+        }
+
+        $entityEndereco = new Endereco(
+            cep: $input['cep'],
+            endereço: $input['endereço'],
+            numero: $input['numero'],
+            complemento: $input['complemento'],
+            bairro: $input['bairro'],
+            cidade: $input['cidade'],
+            estado: $input['estado'],
+            paciente_id: $persistedPaciente->id,
+        );
+
+        $this->repositoryEndereco->insert($entityEndereco);
+    }
+    private function editarEndereco($persistedPaciente, $input)
+    {
+        $cep = $input['cep'];
+
+        if (!preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
+            throw new Exception('CEP invalido');
+        }
+
+        $enderecoByPaciente = $this->repositoryEndereco->findByEnderecoByPacienteId($persistedPaciente->id);
+
+        $entityEndereco = new Endereco(
+            id: $enderecoByPaciente->id,
+            cep: $input['cep'] ?? $enderecoByPaciente->cep,
+            endereço: $input['endereço'] ?? $enderecoByPaciente->endereço,
+            numero: $input['numero'] ?? $enderecoByPaciente->numero,
+            complemento: $input['complemento'] ?? $enderecoByPaciente->complemento,
+            bairro: $input['bairro'] ?? $enderecoByPaciente->bairro,
+            cidade: $input['cidade'] ?? $enderecoByPaciente->cidade,
+            estado: $input['estado'] ?? $enderecoByPaciente->estado,
+            paciente_id: $persistedPaciente->id,
+        );
+
+        $this->repositoryEndereco->update($entityEndereco);
+
     }
 
     private function cadastrarCNS($persistedPaciente, $input): void

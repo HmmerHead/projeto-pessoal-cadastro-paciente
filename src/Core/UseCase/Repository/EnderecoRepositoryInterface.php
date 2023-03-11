@@ -12,5 +12,5 @@ interface EnderecoRepositoryInterface
 
     public function delete(string $pacienteId): bool;
 
-    public function findByCep(string $cep);
+    public function findByEnderecoByPacienteId(string $cep);
 }
