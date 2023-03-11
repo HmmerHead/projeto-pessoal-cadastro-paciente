@@ -28,6 +28,6 @@ class CNS extends Model
 
     public function Paciente(): BelongsTo
     {
-        return $this->belongsTo(CNS::class);
+        return $this->belongsTo(Paciente::class);
     }
 }

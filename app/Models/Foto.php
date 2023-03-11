@@ -28,6 +28,6 @@ class Foto extends Model
 
     public function Paciente(): BelongsTo
     {
-        return $this->belongsTo(Foto::class);
+        return $this->belongsTo(Paciente::class);
     }
 }
