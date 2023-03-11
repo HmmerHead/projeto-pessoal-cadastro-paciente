@@ -68,7 +68,8 @@ class PacienteRepository implements PacienteRepositoryInterface
             }
         }
         $query = $query->orderBy('id', $order);
-        $paginator = $query->paginate();
+
+        $paginator = $query->paginate($totalPage);
 
         return new PaginationPresenter($paginator);
     }
