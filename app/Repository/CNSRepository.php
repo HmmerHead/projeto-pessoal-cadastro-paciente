@@ -16,6 +16,11 @@ class CNSRepository implements CNSRepositoryInterface
         $this->model = $cns;
     }
 
+    /**
+     * Insert da Entity Foto
+     *
+     * @param [type] $cns
+     */
     public function insert($cns): void
     {
         $this->model->create([
@@ -25,6 +30,11 @@ class CNSRepository implements CNSRepositoryInterface
         ]);
     }
 
+    /**
+     * Acha a foto usando o ID do paciente
+     *
+     * @param  string  $pacienteId
+     */
     public function findByCNSPacienteId($pacienteId): CNS
     {
         $Cns = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
@@ -38,6 +48,11 @@ class CNSRepository implements CNSRepositoryInterface
         return $this->toCnsEntity($CnsEntity);
     }
 
+    /**
+     * Update da Entity CNS
+     *
+     * @param  CNS  $cns
+     */
     public function update($cns): void
     {
         if (! $cnsDb = $this->model->find($cns->id())) {
@@ -49,6 +64,11 @@ class CNSRepository implements CNSRepositoryInterface
         ]);
     }
 
+    /**
+     * Transforma em um entity
+     *
+     * @param  CNS  $object
+     */
     private function toCnsEntity($object): CNS
     {
         return new CNS(
@@ -57,6 +77,11 @@ class CNSRepository implements CNSRepositoryInterface
         );
     }
 
+    /**
+     * Delete um CNS
+     *
+     * @param [type] $pacienteId
+     */
     public function delete($pacienteId): bool
     {
         return $this->model->where('paciente_id', $pacienteId)->delete();

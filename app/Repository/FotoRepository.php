@@ -21,6 +21,11 @@ class FotoRepository implements FotoRepositoryInterface
         $this->model = $cns;
     }
 
+    /**
+     * Insert da Entity Foto
+     *
+     * @param  Foto  $foto
+     */
     public function insert($foto): void
     {
         $this->model->create([
@@ -30,7 +35,12 @@ class FotoRepository implements FotoRepositoryInterface
         ]);
     }
 
-    public function findByCNSPacienteId($pacienteId): Foto
+    /**
+     * Acha a foto usando o ID do paciente
+     *
+     * @param  string  $pacienteId
+     */
+    public function findByFotoPacienteId($pacienteId): Foto
     {
         $foto = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
 
@@ -43,6 +53,11 @@ class FotoRepository implements FotoRepositoryInterface
         return $this->toFotoEntity($fotoEntity);
     }
 
+    /**
+     * Update da Entity Foto
+     *
+     * @param  Foto  $foto
+     */
     public function update($foto): void
     {
         if (! $fotoDb = $this->model->find($foto->id())) {
@@ -54,6 +69,11 @@ class FotoRepository implements FotoRepositoryInterface
         ]);
     }
 
+    /**
+     * Transforma em um entity
+     *
+     * @param  Foto  $object
+     */
     private function toFotoEntity($object): Foto
     {
         return new Foto(
@@ -62,13 +82,20 @@ class FotoRepository implements FotoRepositoryInterface
         );
     }
 
+    /**
+     * Delete um Foto
+     *
+     * @param  string  $pacienteId
+     */
     public function delete($pacienteId): bool
     {
         return $this->model->where('paciente_id', $pacienteId)->delete();
     }
 
     /**
-     * Undocumented function
+     * Salva a foto no storage
+     * Salva o arquivo com o nome do paciente em uma pasta
+     * com o ID do paciente como nome
      *
      * @param  UploadedFile  $foto
      * @param  Paciente  $pacienteId
@@ -82,6 +109,12 @@ class FotoRepository implements FotoRepositoryInterface
         return $path.'/'.$nameFile;
     }
 
+    /**
+     * Remove do storage usando como referencia o ID do paciente
+     * E removendo o diretorio
+     *
+     * @param [type] $pacienteId
+     */
     public function removerFotoStorage($pacienteId): bool
     {
         return Storage::deleteDirectory($path = self::PATH.$pacienteId);

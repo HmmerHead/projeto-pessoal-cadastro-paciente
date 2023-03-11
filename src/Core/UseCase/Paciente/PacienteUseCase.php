@@ -231,7 +231,7 @@ class PacienteUseCase
 
     private function editarFoto($updatedPaciente, $input): void
     {
-        $FotoOfUpdatedPaciente = $this->repositoryFoto->findByCNSPacienteId($updatedPaciente->id);
+        $FotoOfUpdatedPaciente = $this->repositoryFoto->findByFotoPacienteId($updatedPaciente->id);
 
         $this->repositoryFoto->removerFotoStorage($updatedPaciente->id);
 

@@ -13,7 +13,7 @@ interface FotoRepositoryInterface
 
     public function delete(string $pacienteId): bool;
 
-    public function findByCNSPacienteId(string $pacienteId): Foto;
+    public function findByFotoPacienteId(string $pacienteId): Foto;
 
     public function salveFotoStorage($foto, Paciente $entityPaciente): string;
 

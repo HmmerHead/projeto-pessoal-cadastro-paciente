@@ -16,6 +16,11 @@ class PacienteRepository implements PacienteRepositoryInterface
         $this->model = $paciente;
     }
 
+    /**
+     * Insert da Entity paciente
+     *
+     * @param  Paciente  $paciente
+     */
     public function insert($paciente): Paciente
     {
         $modelCreated = $this->model->create([
@@ -29,6 +34,11 @@ class PacienteRepository implements PacienteRepositoryInterface
         return $this->toPacienteEntity($modelCreated);
     }
 
+    /**
+     * Update da Entity paciente
+     *
+     * @param  Paciente  $paciente
+     */
     public function update($paciente): Paciente
     {
         if (! $pacienteDb = $this->model->find($paciente->id())) {
@@ -45,6 +55,11 @@ class PacienteRepository implements PacienteRepositoryInterface
         return $this->toPacienteEntity($pacienteDb);
     }
 
+    /**
+     * Lista um paciente
+     *
+     * @param  Paciente  $pacienteId
+     */
     public function listPaciente($pacienteId): Paciente
     {
         if (! $pacienteDB = $this->model->find($pacienteId)) {
@@ -54,16 +69,22 @@ class PacienteRepository implements PacienteRepositoryInterface
         return $this->toPacienteEntity($pacienteDB);
     }
 
+    /**
+     * Lista varios pacientes
+     *
+     * @param  array  $filter
+     * @param  string  $order
+     */
     public function listPacientes($filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter
     {
         $query = $this->model;
         if ($filter) {
             $value = current($filter);
-            if (array_key_exists('nome', $filter) && !empty($value)) {
+            if (array_key_exists('nome', $filter) && ! empty($value)) {
                 $query = $query->where('nome', 'LIKE', "%{$value}%");
             }
 
-            if (array_key_exists('cpf', $filter) && !empty($value)) {
+            if (array_key_exists('cpf', $filter) && ! empty($value)) {
                 $query = $query->where('cpf', 'LIKE', "%{$value}%");
             }
         }
@@ -74,6 +95,11 @@ class PacienteRepository implements PacienteRepositoryInterface
         return new PaginationPresenter($paginator);
     }
 
+    /**
+     * Transforma em um entity
+     *
+     * @param  Paciente  $object
+     */
     private function toPacienteEntity(object $object): Paciente
     {
         return new Paciente(
@@ -86,6 +112,11 @@ class PacienteRepository implements PacienteRepositoryInterface
         );
     }
 
+    /**
+     * Delete um paciente
+     *
+     * @param  string  $pacienteId
+     */
     public function delete($pacienteId): bool
     {
         if (! $pacienteDb = $this->model->find($pacienteId)) {

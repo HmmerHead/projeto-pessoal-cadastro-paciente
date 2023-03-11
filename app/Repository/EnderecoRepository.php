@@ -16,6 +16,11 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         $this->model = $endereco;
     }
 
+    /**
+     * Insert da Entity Foto
+     *
+     * @param  Endereco  $endereco
+     */
     public function insert($endereco): void
     {
         $this->model->create([
@@ -31,6 +36,9 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         ]);
     }
 
+    /**
+     * Acha a foto usando o ID do paciente
+     */
     public function findByEnderecoByPacienteId(string $paciente_id): Endereco
     {
         $endereco = current($this->model->where('paciente_id', $paciente_id)->get()->toArray());
@@ -50,6 +58,11 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         return $this->toEnderecoEntity($enderecoEntity);
     }
 
+    /**
+     * Update da Entity Foto
+     *
+     * @param  Endereco  $endereco
+     */
     public function update($endereco): void
     {
         if (! $endedrecoDb = $this->model->find($endereco->id())) {
@@ -69,6 +82,11 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         ]);
     }
 
+    /**
+     * Transforma em um entity
+     *
+     * @param  Endereco  $object
+     */
     private function toEnderecoEntity($object): Endereco
     {
         return new Endereco(
@@ -84,6 +102,11 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         );
     }
 
+    /**
+     * Delete um Foto
+     *
+     * @param  string  $pacienteId
+     */
     public function delete($pacienteId): bool
     {
         return $this->model->where('paciente_id', $pacienteId)->delete();
