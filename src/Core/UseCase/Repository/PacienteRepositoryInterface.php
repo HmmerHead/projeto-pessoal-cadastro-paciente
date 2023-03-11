@@ -15,5 +15,5 @@ interface PacienteRepositoryInterface
 
     public function listPaciente(string $pacienteId): Paciente;
 
-    public function listPacientes(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter;
+    public function listPacientes(array $filter = [], $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter;
 }

@@ -94,8 +94,6 @@ class PacienteUseCase
             totalPage: $input->get('totalPage', 15)
         );
 
-        dd($result);
-
         return [
             'items' => $result->items(),
             'total' => $result->total(),

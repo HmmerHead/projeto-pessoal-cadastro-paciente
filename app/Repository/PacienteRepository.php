@@ -54,11 +54,18 @@ class PacienteRepository implements PacienteRepositoryInterface
         return $this->toPacienteEntity($pacienteDB);
     }
 
-    public function listPacientes(string $filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter
+    public function listPacientes($filter = '', $order = 'DESC', int $page = 1, int $totalPage = 15): PaginationPresenter
     {
         $query = $this->model;
         if ($filter) {
-            $query = $query->where('name', 'LIKE', "%{$filter}%");
+            $value = current($filter);
+            if (array_key_exists('nome', $filter) && !empty($value)) {
+                $query = $query->where('nome', 'LIKE', "%{$value}%");
+            }
+
+            if (array_key_exists('cpf', $filter) && !empty($value)) {
+                $query = $query->where('cpf', 'LIKE', "%{$value}%");
+            }
         }
         $query = $query->orderBy('id', $order);
         $paginator = $query->paginate();
