@@ -16,7 +16,7 @@ class Endereco extends Model
     protected $fillable = [
         'id',
         'cep',
-        'endereço',
+        'endereco',
         'numero',
         'complemento',
         'bairro',
@@ -31,7 +31,7 @@ class Endereco extends Model
         'id' => 'string',
         'fotoPaciente' => 'string',
         'cep' => 'string',
-        'endereço' => 'string',
+        'endereco' => 'string',
         'numero' => 'string',
         'complemento' => 'string',
         'bairro' => 'string',

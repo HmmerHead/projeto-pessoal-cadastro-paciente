@@ -11,6 +11,7 @@ use Core\UseCase\Repository\FotoRepositoryInterface;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
 use Core\UseCase\Repository\EnderecoRepositoryInterface;
 use Exception;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
@@ -154,7 +155,7 @@ class PacienteUseCase
 
         $entityEndereco = new Endereco(
             cep: $input['cep'],
-            endereço: $input['endereço'],
+            endereco: $input['endereco'],
             numero: $input['numero'],
             complemento: $input['complemento'],
             bairro: $input['bairro'],
@@ -178,7 +179,7 @@ class PacienteUseCase
         $entityEndereco = new Endereco(
             id: $enderecoByPaciente->id,
             cep: $input['cep'] ?? $enderecoByPaciente->cep,
-            endereço: $input['endereço'] ?? $enderecoByPaciente->endereço,
+            endereco: $input['endereco'] ?? $enderecoByPaciente->endereco,
             numero: $input['numero'] ?? $enderecoByPaciente->numero,
             complemento: $input['complemento'] ?? $enderecoByPaciente->complemento,
             bairro: $input['bairro'] ?? $enderecoByPaciente->bairro,
@@ -203,14 +204,16 @@ class PacienteUseCase
 
     private function cadastrarFoto($persistedPaciente, $entityPaciente, $input): void
     {
-        $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $entityPaciente);
+        if ($input['foto'] instanceof UploadedFile) {
+            $path = $this->repositoryFoto->salveFotoStorage($input['foto'], $entityPaciente);
 
-        $entityFoto = new Foto(
-            fotoPaciente: $path,
-            paciente_id: $persistedPaciente->id()
-        );
-
-        $this->repositoryFoto->insert($entityFoto);
+            $entityFoto = new Foto(
+                fotoPaciente: $path,
+                paciente_id: $persistedPaciente->id()
+            );
+    
+            $this->repositoryFoto->insert($entityFoto);
+        }
     }
 
     private function editarCNS($updatedPaciente, $input): void

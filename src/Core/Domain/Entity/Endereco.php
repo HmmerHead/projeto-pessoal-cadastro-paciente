@@ -12,7 +12,7 @@ class Endereco
     public function __construct(
         protected string $id = '',
         protected string $cep = '',
-        protected string $endereço = '',
+        protected string $endereco = '',
         protected string $numero = '',
         protected string $complemento = '',
         protected string $bairro = '',

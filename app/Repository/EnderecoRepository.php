@@ -21,7 +21,7 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         $this->model->create([
             'id' => $endereco->id(),
             'cep' => $endereco->cep,
-            'endereço' => $endereco->endereço,
+            'endereco' => $endereco->endereco,
             'numero' => $endereco->numero,
             'complemento' => $endereco->complemento,
             'bairro' => $endereco->bairro,
@@ -38,7 +38,7 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         $enderecoEntity = new Endereco(
             id: $endereco['id'],
             cep: $endereco['cep'],
-            endereço: $endereco['endereço'],
+            endereco: $endereco['endereco'],
             numero: $endereco['numero'],
             complemento: $endereco['complemento'],
             bairro: $endereco['bairro'],
@@ -59,7 +59,7 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         $endedrecoDb->update([
             'id' => $endereco->id(),
             'cep' => $endereco->cep,
-            'endereço' => $endereco->endereço,
+            'endereco' => $endereco->endereco,
             'numero' => $endereco->numero,
             'complemento' => $endereco->complemento,
             'bairro' => $endereco->bairro,
@@ -74,7 +74,7 @@ class EnderecoRepository implements EnderecoRepositoryInterface
         return new Endereco(
             id: $object->id,
             cep: $object->cep,
-            endereço: $object->endereço,
+            endereco: $object->endereco,
             numero: $object->numero,
             complemento: $object->complemento,
             bairro: $object->bairro,

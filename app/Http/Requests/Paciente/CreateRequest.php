@@ -29,7 +29,7 @@ class CreateRequest extends FormRequest
             'cns' => 'required',
             'foto' => 'required|file',
             'cep' => 'required',
-            'endereço' => 'required',
+            'endereco' => 'required',
             'numero' => 'required',
             'complemento' => 'required',
             'bairro' => 'required',
