@@ -30,4 +30,9 @@ class ImportacaoArquivosJob implements ShouldQueue
     {
         $this->paciente->salvarPaciente($this->records);
     }
+
+    public function tags(): array
+    {
+        return ['csv-import', 'dados-paciente-'.$this->records['nome']];
+    }
 }
