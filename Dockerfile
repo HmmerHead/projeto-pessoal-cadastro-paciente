@@ -8,11 +8,12 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    libpq-dev 
+    libpq-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql mbstring exif pcntl bcmath gd sockets
 
-RUN pecl install xdebug
+RUN pecl install xdebug-3.2.0 \
+    && docker-php-ext-enable xdebug
 
 COPY .docker/php/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 

@@ -21,7 +21,6 @@ class PacienteTest extends TestCase
             nomeMae: 'nomeMae',
             cpf: '29308642064',
             nascimento: new DateTime($nascimento),
-            createdAt: new DateTime($createdAt),
             id: new Uuid($uuid),
         );
 
@@ -30,6 +29,5 @@ class PacienteTest extends TestCase
         $this->assertEquals('nomeMae', $entity->nomeMae);
         $this->assertEquals('29308642064', $entity->cpf);
         $this->assertEquals($nascimento, $entity->nascimento());
-        $this->assertEquals($createdAt, $entity->createdAt());
     }
 }
