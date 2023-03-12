@@ -22,13 +22,5 @@ class Endereco
 
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::generate();
-
-        $this->isValid();
-    }
-
-    // TODO Validar com api?
-    public function isValid()
-    {
-        return true;
     }
 }
