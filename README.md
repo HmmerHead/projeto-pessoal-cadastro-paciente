@@ -1,8 +1,16 @@
 ## Instacação do projeto
 
-Projeto foi criado usando docker. Toda a estrutura do mesmo permite que o projeto seja instalado com o docker-compose
+Projeto foi criado usando docker. Toda a estrutura do mesmo permite que o projeto seja instalado com o docker-compose após um git clone
 
-Para gerar dados em banco - `php artisan migrate:fresh --seed`
+Ao realizar essa ação, 
+
+cp .env.example .env
+
+No .env setar informações como Host para algum de sua preferẽncia
+
+php artisan key:generate
+
+php artisan migrate --seed
 
 Para utilizar o Horizon - `php artisan horizon` 
 
