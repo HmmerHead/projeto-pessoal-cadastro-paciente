@@ -25,4 +25,7 @@ RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
 
+RUN composer install \
+    --no-interaction
+
 EXPOSE 9000
