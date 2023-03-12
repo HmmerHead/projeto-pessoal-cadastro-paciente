@@ -7,9 +7,9 @@ use Core\Domain\Entity\Endereco;
 use Core\Domain\Entity\Foto;
 use Core\Domain\Entity\Paciente;
 use Core\UseCase\Repository\CNSRepositoryInterface;
+use Core\UseCase\Repository\EnderecoRepositoryInterface;
 use Core\UseCase\Repository\FotoRepositoryInterface;
 use Core\UseCase\Repository\PacienteRepositoryInterface;
-use Core\UseCase\Repository\EnderecoRepositoryInterface;
 use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Date;
@@ -149,7 +149,7 @@ class PacienteUseCase
     {
         $cep = $input['cep'];
 
-        if (!preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
+        if (! preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
             throw new Exception('CEP invalido');
         }
 
@@ -166,11 +166,12 @@ class PacienteUseCase
 
         $this->repositoryEndereco->insert($entityEndereco);
     }
+
     private function editarEndereco($persistedPaciente, $input)
     {
         $cep = $input['cep'];
 
-        if (!preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
+        if (! preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
             throw new Exception('CEP invalido');
         }
 
@@ -189,7 +190,6 @@ class PacienteUseCase
         );
 
         $this->repositoryEndereco->update($entityEndereco);
-
     }
 
     private function cadastrarCNS($persistedPaciente, $input): void
@@ -211,7 +211,7 @@ class PacienteUseCase
                 fotoPaciente: $path,
                 paciente_id: $persistedPaciente->id()
             );
-    
+
             $this->repositoryFoto->insert($entityFoto);
         }
     }

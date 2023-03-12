@@ -46,7 +46,7 @@ class CNSRepository implements CNSRepositoryInterface
                 cnsPaciente: $cns['cnsPaciente'],
                 paciente_id: $cns['paciente_id']
             );
-    
+
             return $this->toCnsEntity($CnsEntity);
         }
 

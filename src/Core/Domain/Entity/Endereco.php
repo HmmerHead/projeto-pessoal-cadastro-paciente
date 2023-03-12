@@ -3,12 +3,12 @@
 namespace Core\Domain\Entity;
 
 use Core\Domain\Traits\MetodoMagicoTrait;
-use Core\Domain\ValueObject\CNS as ValurObjectCNS;
 use Core\Domain\ValueObject\Uuid;
 
 class Endereco
 {
     use MetodoMagicoTrait;
+
     public function __construct(
         protected string $id = '',
         protected string $cep = '',

@@ -15,11 +15,11 @@ class ConsultaEnderecoViaCepController extends Controller
     public function __invoke(Request $request)
     {
         $cep = $request->get('cep');
-        if (!preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
+        if (! preg_match('/^[0-9]{5,5}([- ]?[0-9]{3,3})?$/', $cep)) {
             throw new Exception('CEP invalido');
         }
 
-        if (!Cache::store('redis')->has($cep)) {
+        if (! Cache::store('redis')->has($cep)) {
             $result = collect(Http::get("viacep.com.br/ws/{$cep}/json/")->json());
             Cache::store('redis')->put($cep, $result, 300);
         }

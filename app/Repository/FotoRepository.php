@@ -49,9 +49,11 @@ class FotoRepository implements FotoRepositoryInterface
                 id: $foto['id'],
                 fotoPaciente: $foto['fotoPaciente'],
                 paciente_id: $foto['paciente_id']
-            );    
+            );
+
             return $this->toFotoEntity($fotoEntity);
         }
+
         return new Foto(
             fotoPaciente: '',
             paciente_id: $foto['paciente_id'] ?? $pacienteId,
