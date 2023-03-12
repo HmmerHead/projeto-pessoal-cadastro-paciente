@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Paciente;
+use App\Observers\EnderecoObserver;
 use App\Observers\PacienteObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -27,6 +28,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paciente::observe(EnderecoObserver::class);
         Paciente::observe(PacienteObserver::class);
     }
 

@@ -16,7 +16,7 @@ class PacienteSeed extends Seeder
      */
     public function run(): void
     {
-        $paciente = Paciente::factory()->create();
+        $paciente = Paciente::factory()->createOneQuietly();
 
         CNS::factory()
             ->count(1)
