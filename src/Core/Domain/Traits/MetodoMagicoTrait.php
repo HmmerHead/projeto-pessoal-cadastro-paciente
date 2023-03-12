@@ -23,16 +23,6 @@ trait MetodoMagicoTrait
 
     public function nascimento(): string
     {
-        return $this->createdAt->format('Y-m-d H:i:s');
-    }
-
-    public function createdAt(): string
-    {
-        return $this->createdAt->format('Y-m-d H:i:s');
-    }
-
-    public function deletedAt(): string
-    {
-        return $this->deletedAt->format('Y-m-d H:i:s');
+        return $this->nascimento->format('Y-m-d H:i:s');
     }
 }

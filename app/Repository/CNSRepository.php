@@ -35,17 +35,25 @@ class CNSRepository implements CNSRepositoryInterface
      *
      * @param  string  $pacienteId
      */
-    public function findByCNSPacienteId($pacienteId): CNS
+    public function findByCNSPacienteId($pacienteId, $input): CNS
     {
-        $Cns = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
+        $cns = $this->model->where('paciente_id', $pacienteId)->first();
 
-        $CnsEntity = new CNS(
-            id: $Cns['id'],
-            cnsPaciente: $Cns['cnsPaciente'],
-            paciente_id: $Cns['paciente_id']
+        if ($cns) {
+            $cns = $cns->toArray();
+            $CnsEntity = new CNS(
+                id: $cns['id'],
+                cnsPaciente: $cns['cnsPaciente'],
+                paciente_id: $cns['paciente_id']
+            );
+    
+            return $this->toCnsEntity($CnsEntity);
+        }
+
+        return new CNS(
+            cnsPaciente: $input['cns'],
+            paciente_id: $pacienteId
         );
-
-        return $this->toCnsEntity($CnsEntity);
     }
 
     /**
@@ -73,7 +81,8 @@ class CNSRepository implements CNSRepositoryInterface
     {
         return new CNS(
             id: $object->id,
-            cnsPaciente: $object->cnsPaciente
+            cnsPaciente: $object->cnsPaciente,
+            paciente_id: $object->paciente_id
         );
     }
 

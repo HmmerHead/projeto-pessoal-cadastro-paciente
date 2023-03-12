@@ -12,5 +12,5 @@ interface CNSRepositoryInterface
 
     public function delete(string $pacienteId): bool;
 
-    public function findByCNSPacienteId(string $pacienteId): CNS;
+    public function findByCNSPacienteId(string $pacienteId, array $input): CNS;
 }

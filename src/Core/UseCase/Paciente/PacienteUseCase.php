@@ -218,12 +218,12 @@ class PacienteUseCase
 
     private function editarCNS($updatedPaciente, $input): void
     {
-        $CNSOfUpdatedPaciente = $this->repositoryCns->findByCNSPacienteId($updatedPaciente->id);
+        $CNSOfUpdatedPaciente = $this->repositoryCns->findByCNSPacienteId($updatedPaciente->id, $input);
 
         $entityCns = new CNS(
             id: $CNSOfUpdatedPaciente->id(),
             paciente_id: $updatedPaciente->id(),
-            cnsPaciente: (string) $input['cns']
+            cnsPaciente: (string) $input['cns'] ?? $CNSOfUpdatedPaciente->cns
         );
 
         $this->repositoryCns->update($entityCns);

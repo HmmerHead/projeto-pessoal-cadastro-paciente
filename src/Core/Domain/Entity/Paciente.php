@@ -16,13 +16,10 @@ class Paciente
         protected string $nomeMae,
         protected string $cpf,
         protected DateTime $nascimento,
-        protected ?DateTime $createdAt = null,
-        protected ?DateTime $deletedAt = null,
-        protected string $id = '',
+        protected string $id,
 
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::generate();
-        $this->createdAt = $this->createdAt ?? new DateTime();
 
         $this->isValid();
     }
