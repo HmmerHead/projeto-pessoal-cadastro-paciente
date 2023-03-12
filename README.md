@@ -18,8 +18,13 @@ Foi pedido também, a criação de um endpoint, que realiza buscas no ViaCep e f
 A estrutura do projeto foi feita usando alguns dos ensinamentos do Clean Architecture. Busquei deixar os principais entidade, o mais fora possível do framework, assim, qualquer mudança poderá ser feita, com poucas quebras no andamento do projeto. Alguns casos de uso também busquei criar separados. No src/Core há os UseCases e o Domain, sendo no primeiro, o caso de uso de cadastro do Paciente e alguns interfaces de como poderia ser feito o cadastro das entidades. Já em Domain, estão as entidades, alguns trait's e alguns objetos de valor para ajudar na criação das entidades.
 Dentro do framework em app/Repository está por conta de realizar algumas ações, mas com o uso do framework para auxiliar. 
 
-### Pontos Realizados (Resumo) 
+### Estrutura do Banco
 <br>
+![image](https://user-images.githubusercontent.com/26328503/224576207-3c95c7d6-b081-43b0-a17a-24a79d9112e2.png)
+<br>
+
+### Pontos Realizados (Resumo) 
+
 
 <br>
 
