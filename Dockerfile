@@ -25,7 +25,14 @@ RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
 
+COPY . /var/www
+
+WORKDIR /var/www
+
 RUN composer install \
-    --no-interaction
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist
 
 EXPOSE 9000
