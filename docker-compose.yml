@@ -35,6 +35,7 @@ services:
           environment:
             - POSTGRES_USER=paciente
             - POSTGRES_PASSWORD=root
+            - POSTGRES_DB=clinica
           ports:
           - "5432:5432"
           networks:
