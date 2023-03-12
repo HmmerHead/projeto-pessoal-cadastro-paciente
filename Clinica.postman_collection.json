@@ -1,0 +1,2000 @@
+{
+	"info": {
+		"_postman_id": "a2b79a9b-0b78-4850-8ab0-09d3b3238739",
+		"name": "Clinica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14534531"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nome",
+							"value": "Juliane Carmona Verdugo Neto",
+							"type": "text"
+						},
+						{
+							"key": "nomeMae",
+							"value": "Carmona Verdugo",
+							"type": "text"
+						},
+						{
+							"key": "cpf",
+							"value": "2930864206",
+							"type": "text"
+						},
+						{
+							"key": "nascimento",
+							"value": "10-10-2009",
+							"type": "text"
+						},
+						{
+							"key": "cns",
+							"value": "195091094770003",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": "/home/guilherme/Imagens/WhatsApp Image 2021-12-23 at 151.jpeg"
+						},
+						{
+							"key": "cep",
+							"value": "36035-220",
+							"type": "text"
+						},
+						{
+							"key": "endereco",
+							"value": "Rua Carmona",
+							"type": "text"
+						},
+						{
+							"key": "numero",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "complemento",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "bairro",
+							"value": "Neto",
+							"type": "text"
+						},
+						{
+							"key": "cidade",
+							"value": "Neto",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "MG",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pacientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pacientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create com sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Juliane Carmona Verdugo Neto",
+									"type": "text"
+								},
+								{
+									"key": "nomeMae",
+									"value": "Carmona Verdugo",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "29308642064",
+									"type": "text"
+								},
+								{
+									"key": "nascimento",
+									"value": "10-10-2009",
+									"type": "text"
+								},
+								{
+									"key": "cns",
+									"value": "195091094770003",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/home/guilherme/Imagens/WhatsApp Image 2021-12-23 at 151.jpeg"
+								},
+								{
+									"key": "cep",
+									"value": "36035-220",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua Carmona",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "complemento",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "Neto",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "Neto",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "MG",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:20:48 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"e1a91277-b23a-4d2c-971b-388a9f89c9cd\",\n        \"nome\": \"Juliane Carmona Verdugo Neto\",\n        \"nomeMae\": \"Carmona Verdugo\",\n        \"cpf\": \"29308642064\",\n        \"nascimento\": \"2009-10-10T03:00:00.000000Z\"\n    }\n}"
+				},
+				{
+					"name": "create com CNS invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Juliane Carmona Verdugo Neto",
+									"type": "text"
+								},
+								{
+									"key": "nomeMae",
+									"value": "Carmona Verdugo",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "29308642064",
+									"type": "text"
+								},
+								{
+									"key": "nascimento",
+									"value": "10-10-2009",
+									"type": "text"
+								},
+								{
+									"key": "cns",
+									"value": "1950910",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/home/guilherme/Imagens/WhatsApp Image 2021-12-23 at 151.jpeg"
+								},
+								{
+									"key": "cep",
+									"value": "36035-220",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua Carmona",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "complemento",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "Neto",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "Neto",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "MG",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:21:13 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"CNS Invalido\"\n}"
+				},
+				{
+					"name": "create Cpf invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Juliane Carmona Verdugo Neto",
+									"type": "text"
+								},
+								{
+									"key": "nomeMae",
+									"value": "Carmona Verdugo",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "2930864206",
+									"type": "text"
+								},
+								{
+									"key": "nascimento",
+									"value": "10-10-2009",
+									"type": "text"
+								},
+								{
+									"key": "cns",
+									"value": "195091094770003",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/home/guilherme/Imagens/WhatsApp Image 2021-12-23 at 151.jpeg"
+								},
+								{
+									"key": "cep",
+									"value": "36035-220",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua Carmona",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "complemento",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "Neto",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "Neto",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "MG",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:21:38 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Documento Invalido\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nome",
+							"value": "dascsae",
+							"type": "text"
+						},
+						{
+							"key": "nomeMae",
+							"value": "testeMae",
+							"type": "text"
+						},
+						{
+							"key": "cpf",
+							"value": "29308642064",
+							"type": "text"
+						},
+						{
+							"key": "nascimento",
+							"value": "11-11-2032",
+							"type": "text"
+						},
+						{
+							"key": "cns",
+							"value": "153638180670009",
+							"type": "text"
+						},
+						{
+							"key": "cep",
+							"value": "36035-220",
+							"type": "text"
+						},
+						{
+							"key": "endereco",
+							"value": "ewqasda",
+							"type": "text"
+						},
+						{
+							"key": "numero",
+							"value": "ewq",
+							"type": "text"
+						},
+						{
+							"key": "complemento",
+							"value": "eweq",
+							"type": "text"
+						},
+						{
+							"key": "bairro",
+							"value": "eweq",
+							"type": "text"
+						},
+						{
+							"key": "cidade",
+							"value": "ewqeq",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "ewqe",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"type": "file",
+							"src": "/home/guilherme/Imagens/Captura de tela de 2022-01-21 08-03-10.png"
+						},
+						{
+							"key": "_method",
+							"value": "PUT",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pacientes/260890e6-7d03-3392-afc3-c41bacdfec7c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pacientes",
+						"260890e6-7d03-3392-afc3-c41bacdfec7c"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update com sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Verdugo Neto",
+									"type": "text"
+								},
+								{
+									"key": "nomeMae",
+									"value": "Cristina Neto",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "29308642064",
+									"type": "text"
+								},
+								{
+									"key": "nascimento",
+									"value": "11-11-1990",
+									"type": "text"
+								},
+								{
+									"key": "cns",
+									"value": "153638180670009",
+									"type": "text"
+								},
+								{
+									"key": "cep",
+									"value": "36035-220",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua Clara",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "complemento",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "Claras",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "Clara",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "SP",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/home/guilherme/Imagens/db.png"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes/9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes",
+								"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:24:00 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7\",\n        \"nome\": \"Verdugo Neto\",\n        \"nomeMae\": \"Cristina Neto\",\n        \"cpf\": \"29308642064\",\n        \"nascimento\": \"1990-11-11T02:00:00.000000Z\"\n    }\n}"
+				},
+				{
+					"name": "update com CNS invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Verdugo Neto",
+									"type": "text"
+								},
+								{
+									"key": "nomeMae",
+									"value": "Cristina Neto",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "29308642064",
+									"type": "text"
+								},
+								{
+									"key": "nascimento",
+									"value": "11-11-1990",
+									"type": "text"
+								},
+								{
+									"key": "cns",
+									"value": "15363818067",
+									"type": "text"
+								},
+								{
+									"key": "cep",
+									"value": "36035-220",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua Clara",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "complemento",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "Claras",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "Clara",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "SP",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/home/guilherme/Imagens/db.png"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes/9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes",
+								"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:24:20 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"CNS Invalido\"\n}"
+				},
+				{
+					"name": "update documento invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Verdugo Neto",
+									"type": "text"
+								},
+								{
+									"key": "nomeMae",
+									"value": "Cristina Neto",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "2930864206",
+									"type": "text"
+								},
+								{
+									"key": "nascimento",
+									"value": "11-11-1990",
+									"type": "text"
+								},
+								{
+									"key": "cns",
+									"value": "15363818067",
+									"type": "text"
+								},
+								{
+									"key": "cep",
+									"value": "36035-220",
+									"type": "text"
+								},
+								{
+									"key": "endereco",
+									"value": "Rua Clara",
+									"type": "text"
+								},
+								{
+									"key": "numero",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "complemento",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "bairro",
+									"value": "Claras",
+									"type": "text"
+								},
+								{
+									"key": "cidade",
+									"value": "Clara",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "SP",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/home/guilherme/Imagens/db.png"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes/9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes",
+								"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:25:06 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Documento Invalido\"\n}"
+				}
+			]
+		},
+		{
+			"name": "listAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"page\": 2,\n    \"totalPage\": 5\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pacientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pacientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "listAll sem retorno",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\": 2,\n    \"totalPage\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 14:02:57 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [],\n    \"meta\": {\n        \"total\": 0,\n        \"current_page\": 2,\n        \"last_page\": 1,\n        \"first_page\": 0,\n        \"per_page\": 5,\n        \"to\": 0,\n        \"from\": 0\n    }\n}"
+				},
+				{
+					"name": "listAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:16:44 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7\",\n            \"nome\": \"frlipé\",\n            \"nomeMae\": \"minha1a\",\n            \"cpf\": \"29308642064\",\n            \"nascimento\": \"2009-10-10T03:00:00.000000Z\"\n        },\n        {\n            \"id\": \"41060be1-f854-35f5-880f-2041bf434007\",\n            \"nome\": \"Juliane Carmona Verdugo Neto\",\n            \"nomeMae\": \"Flor\",\n            \"cpf\": \"995.114.165-02\",\n            \"nascimento\": \"2023-02-15T07:37:25.000000Z\"\n        }\n    ],\n    \"meta\": {\n        \"total\": 2,\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"first_page\": 1,\n        \"per_page\": 15,\n        \"to\": 1,\n        \"from\": 2\n    }\n}"
+				},
+				{
+					"name": "listAll com filtrno nome",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filter\": {\n        \"nome\" : \"Juliane\"\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:17:34 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"41060be1-f854-35f5-880f-2041bf434007\",\n            \"nome\": \"Juliane Carmona Verdugo Neto\",\n            \"nomeMae\": \"Flor\",\n            \"cpf\": \"995.114.165-02\",\n            \"nascimento\": \"2023-02-15T07:37:25.000000Z\"\n        }\n    ],\n    \"meta\": {\n        \"total\": 1,\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"first_page\": 1,\n        \"per_page\": 15,\n        \"to\": 1,\n        \"from\": 1\n    }\n}"
+				},
+				{
+					"name": "listAll com CPF como filtro",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filter\": {\n        \"cpf\" : \"995.114.165-02\"\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:18:09 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"41060be1-f854-35f5-880f-2041bf434007\",\n            \"nome\": \"Juliane Carmona Verdugo Neto\",\n            \"nomeMae\": \"Flor\",\n            \"cpf\": \"995.114.165-02\",\n            \"nascimento\": \"2023-02-15T07:37:25.000000Z\"\n        }\n    ],\n    \"meta\": {\n        \"total\": 1,\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"first_page\": 1,\n        \"per_page\": 15,\n        \"to\": 1,\n        \"from\": 1\n    }\n}"
+				},
+				{
+					"name": "listAll com paginação",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\": 2,\n    \"totalPage\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:19:03 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "55"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"1b09f824-bc68-4b3b-92fe-7d28fe9a58ef\",\n            \"nome\": \"frlipé\",\n            \"nomeMae\": \"minha1a\",\n            \"cpf\": \"29308642064\",\n            \"nascimento\": \"2009-10-10T03:00:00.000000Z\"\n        }\n    ],\n    \"meta\": {\n        \"total\": 6,\n        \"current_page\": 2,\n        \"last_page\": 2,\n        \"first_page\": 6,\n        \"per_page\": 5,\n        \"to\": 6,\n        \"from\": 6\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pacientes/9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pacientes",
+						"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete com sucesso",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes/9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes",
+								"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:25:32 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"9e319ee4-0e9e-41b1-89f0-2478f0d9d4c7\",\n        \"nome\": \"Verdugo Neto\",\n        \"nomeMae\": \"Cristina Neto\",\n        \"cpf\": \"29308642064\",\n        \"nascimento\": \"1990-11-11T02:00:00.000000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "ListOner",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pacientes/1b09f824-bc68-4b3b-92fe-7d28fe9a58ef",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pacientes",
+						"1b09f824-bc68-4b3b-92fe-7d28fe9a58ef"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ListOne paciente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/pacientes/1b09f824-bc68-4b3b-92fe-7d28fe9a58ef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pacientes",
+								"1b09f824-bc68-4b3b-92fe-7d28fe9a58ef"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:25:56 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "56"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"1b09f824-bc68-4b3b-92fe-7d28fe9a58ef\",\n        \"nome\": \"frlipé\",\n        \"nomeMae\": \"minha1a\",\n        \"cpf\": \"29308642064\",\n        \"nascimento\": \"2009-10-10T03:00:00.000000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "ConsultaEnderecoViaCep",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/ConsultaEnderecoViaCep?cep=36030410",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"ConsultaEnderecoViaCep"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "36030410"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ConsultaEnderecoViaCep com sucesso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/ConsultaEnderecoViaCep?cep=36030410",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"ConsultaEnderecoViaCep"
+							],
+							"query": [
+								{
+									"key": "cep",
+									"value": "36030410"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:27:00 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cep\": \"36030-410\",\n    \"logradouro\": \"Rua Deli Faria Dazini\",\n    \"complemento\": \"\",\n    \"bairro\": \"Jardim Olímpia\",\n    \"localidade\": \"Juiz de Fora\",\n    \"uf\": \"MG\",\n    \"ibge\": \"3136702\",\n    \"gia\": \"\",\n    \"ddd\": \"32\",\n    \"siafi\": \"4733\"\n}"
+				}
+			]
+		},
+		{
+			"name": "importarPaciente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/guilherme/Área de Trabalho/teste.csv"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/guilherme/Área de Trabalho/teste-vazio.csv",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/importarPacientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"importarPacientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "importarPaciente Com sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/guilherme/Área de Trabalho/teste.csv"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/guilherme/Área de Trabalho/teste-vazio.csv",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/importarPacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"importarPacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:32:31 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "Informações enviadas para processamento"
+				},
+				{
+					"name": "importarPaciente com algum erro",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/guilherme/Área de Trabalho/teste.csv"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/guilherme/Área de Trabalho/teste-vazio.csv",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/importarPacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"importarPacientes"
+							]
+						}
+					},
+					"status": "Request Timeout",
+					"code": 408,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:32:56 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "Erro no processamento: No route to host"
+				},
+				{
+					"name": "importarPaciente sem dados",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/guilherme/Área de Trabalho/teste.csv",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/guilherme/Área de Trabalho/teste-vazio.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/importarPacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"importarPacientes"
+							]
+						}
+					},
+					"status": "Request Timeout",
+					"code": 408,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.15.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.3"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 12 Mar 2023 23:35:44 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "Erro no processamento: CSV sem os dados"
+				}
+			]
+		}
+	]
+}
