@@ -41,21 +41,29 @@ class EnderecoRepository implements EnderecoRepositoryInterface
      */
     public function findByEnderecoByPacienteId(string $paciente_id): Endereco
     {
-        $endereco = current($this->model->where('paciente_id', $paciente_id)->get()->toArray());
+        $endereco = $this->model->where('paciente_id', $paciente_id)->first();
 
-        $enderecoEntity = new Endereco(
-            id: $endereco['id'],
-            cep: $endereco['cep'],
-            endereco: $endereco['endereco'],
-            numero: $endereco['numero'],
-            complemento: $endereco['complemento'],
-            bairro: $endereco['bairro'],
-            cidade: $endereco['cidade'],
-            estado: $endereco['estado'],
-            paciente_id: $endereco['paciente_id'],
+        if ($endereco) {
+            $endereco = $endereco->toArray();
+
+            $enderecoEntity = new Endereco(
+                id: $endereco['id'],
+                cep: $endereco['cep'],
+                endereco: $endereco['endereco'],
+                numero: $endereco['numero'],
+                complemento: $endereco['complemento'],
+                bairro: $endereco['bairro'],
+                cidade: $endereco['cidade'],
+                estado: $endereco['estado'],
+                paciente_id: $endereco['paciente_id'],
+            );
+
+            return $enderecoEntity;
+        }
+
+        return new Endereco(
+            paciente_id: $paciente_id,
         );
-
-        return $this->toEnderecoEntity($enderecoEntity);
     }
 
     /**
@@ -80,26 +88,6 @@ class EnderecoRepository implements EnderecoRepositoryInterface
             'estado' => $endereco->estado,
             'paciente_id' => $endereco->paciente_id,
         ]);
-    }
-
-    /**
-     * Transforma em um entity
-     *
-     * @param  Endereco  $object
-     */
-    private function toEnderecoEntity($object): Endereco
-    {
-        return new Endereco(
-            id: $object->id,
-            cep: $object->cep,
-            endereco: $object->endereco,
-            numero: $object->numero,
-            complemento: $object->complemento,
-            bairro: $object->bairro,
-            cidade: $object->cidade,
-            estado: $object->estado,
-            paciente_id: $object->paciente_id,
-        );
     }
 
     /**

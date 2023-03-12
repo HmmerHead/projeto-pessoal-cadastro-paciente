@@ -42,15 +42,20 @@ class FotoRepository implements FotoRepositoryInterface
      */
     public function findByFotoPacienteId($pacienteId): Foto
     {
-        $foto = current($this->model->where('paciente_id', $pacienteId)->get()->toArray());
-
-        $fotoEntity = new Foto(
-            id: $foto['id'],
-            fotoPaciente: $foto['fotoPaciente'],
-            paciente_id: $foto['paciente_id']
+        $foto = $this->model->where('paciente_id', $pacienteId)->first();
+        if ($foto) {
+            $foto = $foto->toArray();
+            $fotoEntity = new Foto(
+                id: $foto['id'],
+                fotoPaciente: $foto['fotoPaciente'],
+                paciente_id: $foto['paciente_id']
+            );    
+            return $this->toFotoEntity($fotoEntity);
+        }
+        return new Foto(
+            fotoPaciente: '',
+            paciente_id: $foto['paciente_id'] ?? $pacienteId,
         );
-
-        return $this->toFotoEntity($fotoEntity);
     }
 
     /**
