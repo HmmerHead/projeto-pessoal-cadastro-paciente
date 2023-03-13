@@ -1,4 +1,4 @@
-## Instacação do projeto
+## Instalação do projeto
 
 <br>
 Projeto foi criado usando docker. Toda a estrutura do mesmo permite que o projeto seja instalado com o docker-compose após um git clone. Em seguida.
