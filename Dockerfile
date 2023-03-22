@@ -48,6 +48,4 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-RUN ls
-
 EXPOSE 9000
