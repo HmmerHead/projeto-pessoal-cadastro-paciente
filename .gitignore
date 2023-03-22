@@ -6,7 +6,7 @@
 /storage/*.key
 /vendor
 .env
-.docker/postgres/*
+.docker/postgres/data
 .devcontainer
 .env.backup
 .env.production

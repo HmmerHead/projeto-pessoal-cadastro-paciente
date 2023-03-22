@@ -28,10 +28,10 @@ services:
             - app
 
     db:
-          image: postgres:10-alpine
+          build: ./.docker/postgres
           container_name: paciente-postgres
           volumes:
-            - "./.docker/postgres:/var/lib/postgresql/data"
+            - "./.docker/postgres/data:/var/lib/postgresql/data"
           environment:
             - POSTGRES_USER=paciente
             - POSTGRES_PASSWORD=root
