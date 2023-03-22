@@ -21,6 +21,19 @@ WORKDIR /var/www
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Cache Composer dependencies
+WORKDIR /tmp
+ADD composer.json composer.lock /tmp/
+RUN mkdir -p database/seeds \
+    mkdir -p database/factories \
+    && composer install \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist \
+    && rm -rf composer.json composer.lock \
+    database/ vendor/
+
 RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  docker-php-ext-enable redis
@@ -34,5 +47,7 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
+
+RUN ls
 
 EXPOSE 9000
