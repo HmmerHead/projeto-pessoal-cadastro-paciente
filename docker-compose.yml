@@ -9,6 +9,8 @@ services:
             - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
         networks:
             - app-network
+        links:
+            - db:db
         depends_on:
             - db
             - redis
