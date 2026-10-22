@@ -1,5 +1,7 @@
 FROM php:8.2-fpm
 
+ARG COMPOSER_NO_DEV=true
+
 ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS="0" \
     PHP_OPCACHE_MAX_ACCELERATED_FILES="10000" \
     PHP_OPCACHE_MEMORY_CONSUMPTION="200" \
@@ -40,7 +42,8 @@ WORKDIR /tmp
 ADD composer.json composer.lock /tmp/
 RUN mkdir -p database/seeds \
     mkdir -p database/factories \
-    && composer install \
+    && if [ "$COMPOSER_NO_DEV" = "true" ]; then COMPOSER_NO_DEV_OPTION="--no-dev"; else COMPOSER_NO_DEV_OPTION=""; fi \
+    && composer install $COMPOSER_NO_DEV_OPTION \
     --no-interaction \
     --no-plugins \
     --no-scripts \
@@ -56,7 +59,8 @@ COPY . /var/www
 
 WORKDIR /var/www
 
-RUN composer install \
+RUN if [ "$COMPOSER_NO_DEV" = "true" ]; then COMPOSER_NO_DEV_OPTION="--no-dev"; else COMPOSER_NO_DEV_OPTION=""; fi \
+    && composer install $COMPOSER_NO_DEV_OPTION \
     --no-interaction \
     --no-plugins \
     --no-scripts \
