@@ -14,6 +14,23 @@ class PacienteTest extends TestCase
 {
     protected $endpoint = 'http://localhost:8000/api/pacientes';
 
+    public function test_patient_and_import_endpoints_require_authentication(): void
+    {
+        $endpoints = [
+            ['GET', '/api/pacientes'],
+            ['GET', '/api/pacientes/1'],
+            ['POST', '/api/pacientes'],
+            ['PUT', '/api/pacientes/1'],
+            ['PATCH', '/api/pacientes/1'],
+            ['DELETE', '/api/pacientes/1'],
+            ['POST', '/api/importarPacientes'],
+        ];
+
+        foreach ($endpoints as [$method, $uri]) {
+            $this->json($method, $uri)->assertUnauthorized();
+        }
+    }
+
     public function atest_criacao_paciente(): void
     {
         $uuid = (string) RamseyUuid::uuid4();
