@@ -6,13 +6,26 @@ Projeto foi criado usando docker. Toda a estrutura do mesmo permite que o projet
 
 `cp .env.example .env`
 
-No .env setar informações como Host do DB e do Redis para algum de sua preferẽncia.
+No `.env`, defina senhas fortes e exclusivas para `DB_PASSWORD` e `POSTGRES_ADMIN_PASSWORD`. O usuário `DB_USERNAME` é criado com permissões limitadas para a aplicação; o usuário `POSTGRES_ADMIN_USER` é reservado para administração. O banco fica acessível apenas pela rede interna do Docker.
+
+Para instalações com um volume PostgreSQL já existente, o script de inicialização não será executado novamente. Crie o usuário `DB_USERNAME` no banco e conceda a ele acesso ao banco e permissões de uso e criação no schema `public` antes de iniciar a aplicação.
 
 `php artisan key:generate`
 
 `php artisan migrate --seed`
 
 Para utilizar o Horizon - `php artisan horizon` 
+
+As rotas de pacientes e de importação exigem um token Sanctum. Crie um usuário e gere o token pelo Tinker (`php artisan tinker`), mantendo o token retornado em local seguro:
+
+```php
+$user = \App\Models\User::create([
+    'name' => 'API',
+    'email' => 'api@example.com',
+    'password' => \Illuminate\Support\Facades\Hash::make(\Illuminate\Support\Str::random(40)),
+]);
+$user->createToken('api-client')->plainTextToken;
+```
 
 <br>
 A consulta no endpoint endereço está usando Cache. Caso o mesmo cep seja usado, a consulta será armazenada por alguns minutos.
@@ -34,4 +47,3 @@ Endpoint's para a realização das ações (adição, edição, visualização e
 <br>
 ![image](https://user-images.githubusercontent.com/26328503/224576207-3c95c7d6-b081-43b0-a17a-24a79d9112e2.png)
 <br>
-
