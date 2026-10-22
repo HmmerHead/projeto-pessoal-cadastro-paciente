@@ -3,6 +3,8 @@
 <br>
 Projeto foi criado usando docker. Toda a estrutura do mesmo permite que o projeto seja instalado com o docker-compose após um git clone. Em seguida.
 
+O `docker-compose` inclui dependências de desenvolvimento para uso local. Imagens construídas diretamente pelo `Dockerfile` excluem essas dependências por padrão; defina `COMPOSER_NO_DEV=false` somente quando precisar delas.
+
 
 `cp .env.example .env`
 
