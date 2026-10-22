@@ -6,7 +6,7 @@ Projeto foi criado usando docker. Toda a estrutura do mesmo permite que o projet
 
 `cp .env.example .env`
 
-No `.env`, defina senhas fortes e exclusivas para `DB_PASSWORD` e `POSTGRES_ADMIN_PASSWORD`. O usuário `DB_USERNAME` é criado com permissões limitadas para a aplicação; o usuário `POSTGRES_ADMIN_USER` é reservado para administração. O banco fica acessível apenas pela rede interna do Docker.
+No `.env`, defina senhas fortes e exclusivas para `DB_PASSWORD` e `POSTGRES_ADMIN_PASSWORD`, e nomes diferentes para `DB_USERNAME` e `POSTGRES_ADMIN_USER`. O usuário `DB_USERNAME` é criado com permissões limitadas para a aplicação; o usuário `POSTGRES_ADMIN_USER` é reservado para administração. O banco fica acessível apenas pela rede interna do Docker.
 
 Para instalações com um volume PostgreSQL já existente, o script de inicialização não será executado novamente. Crie o usuário `DB_USERNAME` no banco e conceda a ele acesso ao banco e permissões de uso e criação no schema `public` antes de iniciar a aplicação.
 

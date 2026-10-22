@@ -21,6 +21,7 @@ class PacienteTest extends TestCase
             ['GET', '/api/pacientes/1'],
             ['POST', '/api/pacientes'],
             ['PUT', '/api/pacientes/1'],
+            ['PATCH', '/api/pacientes/1'],
             ['DELETE', '/api/pacientes/1'],
             ['POST', '/api/importarPacientes'],
         ];
